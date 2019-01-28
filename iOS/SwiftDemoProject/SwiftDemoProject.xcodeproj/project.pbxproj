@@ -57,6 +57,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F81D82BA21FF4A160043F781 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F81D82BB21FF4A160043F781 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F81D82BC21FF4A160043F781 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F81D82BD21FF4A160043F781 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F81D82BE21FF4A170043F781 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F8BB4A7421FE693700B1C723 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +113,11 @@
 		F8BB4A7F21FE693800B1C723 /* SwiftDemoProject */ = {
 			isa = PBXGroup;
 			children = (
+				F81D82BE21FF4A170043F781 /* Extensions */,
+				F81D82BD21FF4A160043F781 /* Helpers */,
+				F81D82BA21FF4A160043F781 /* Model */,
+				F81D82BB21FF4A160043F781 /* Service */,
+				F81D82BC21FF4A160043F781 /* ViewController */,
 				F8BB4A8021FE693800B1C723 /* AppDelegate.swift */,
 				F8BB4A8221FE693800B1C723 /* ViewController.swift */,
 				F8BB4A8421FE693800B1C723 /* Main.storyboard */,
