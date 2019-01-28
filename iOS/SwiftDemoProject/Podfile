@@ -8,4 +8,6 @@ target 'SwiftDemoProject' do
   pod 'Alamofire',    '~> 4.0'
   pod 'RxSwift',    '~> 4.0'
   pod 'RxCocoa',    '~> 4.0'
+  pod 'RxSwiftExt'
+  pod 'PKHUD', '~> 5.0'
 end

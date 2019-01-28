@@ -8,8 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		65D8EA73F26DDC7FAD7B8E31 /* Pods_SwiftDemoProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B199F0C7D549B508119D4F5 /* Pods_SwiftDemoProject.framework */; };
+		F81D82C021FF4F240043F781 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D82BF21FF4F240043F781 /* LoginViewController.swift */; };
+		F81D82C221FF5CF50043F781 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F81D82C121FF5CF50043F781 /* QuartzCore.framework */; };
+		F81D82C421FF5F590043F781 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D82C321FF5F590043F781 /* UIColorExtension.swift */; };
+		F81D82C621FF61D30043F781 /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D82C521FF61D30043F781 /* CALayerExtension.swift */; };
+		F81D82C921FF7EA20043F781 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D82C821FF7EA20043F781 /* UIScreenExtension.swift */; };
+		F81D82CB21FF8A220043F781 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D82CA21FF8A220043F781 /* LoginViewModel.swift */; };
 		F8BB4A8121FE693800B1C723 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB4A8021FE693800B1C723 /* AppDelegate.swift */; };
-		F8BB4A8321FE693800B1C723 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB4A8221FE693800B1C723 /* ViewController.swift */; };
 		F8BB4A8621FE693800B1C723 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8421FE693800B1C723 /* Main.storyboard */; };
 		F8BB4A8821FE693800B1C723 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8721FE693800B1C723 /* Assets.xcassets */; };
 		F8BB4A8B21FE693800B1C723 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8921FE693800B1C723 /* LaunchScreen.storyboard */; };
@@ -19,9 +24,14 @@
 		17EF23DAD6754417FD8BE41E /* Pods-SwiftDemoProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftDemoProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftDemoProject/Pods-SwiftDemoProject.debug.xcconfig"; sourceTree = "<group>"; };
 		2B199F0C7D549B508119D4F5 /* Pods_SwiftDemoProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftDemoProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDCBBD1F907759FA196E7DAA /* Pods-SwiftDemoProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftDemoProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftDemoProject/Pods-SwiftDemoProject.release.xcconfig"; sourceTree = "<group>"; };
+		F81D82BF21FF4F240043F781 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F81D82C121FF5CF50043F781 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F81D82C321FF5F590043F781 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		F81D82C521FF61D30043F781 /* CALayerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
+		F81D82C821FF7EA20043F781 /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
+		F81D82CA21FF8A220043F781 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		F8BB4A7D21FE693800B1C723 /* SwiftDemoProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDemoProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8BB4A8021FE693800B1C723 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F8BB4A8221FE693800B1C723 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F8BB4A8521FE693800B1C723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F8BB4A8721FE693800B1C723 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8BB4A8A21FE693800B1C723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -33,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F81D82C221FF5CF50043F781 /* QuartzCore.framework in Frameworks */,
 				65D8EA73F26DDC7FAD7B8E31 /* Pods_SwiftDemoProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,6 +63,7 @@
 		9D3C6A8E77BDECDCC3C63739 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F81D82C121FF5CF50043F781 /* QuartzCore.framework */,
 				2B199F0C7D549B508119D4F5 /* Pods_SwiftDemoProject.framework */,
 			);
 			name = Frameworks;
@@ -74,6 +86,7 @@
 		F81D82BC21FF4A160043F781 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F81D82BF21FF4F240043F781 /* LoginViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -88,8 +101,19 @@
 		F81D82BE21FF4A170043F781 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F81D82C321FF5F590043F781 /* UIColorExtension.swift */,
+				F81D82C521FF61D30043F781 /* CALayerExtension.swift */,
+				F81D82C821FF7EA20043F781 /* UIScreenExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F81D82C721FF63FA0043F781 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F81D82CA21FF8A220043F781 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		F8BB4A7421FE693700B1C723 = {
@@ -117,9 +141,9 @@
 				F81D82BD21FF4A160043F781 /* Helpers */,
 				F81D82BA21FF4A160043F781 /* Model */,
 				F81D82BB21FF4A160043F781 /* Service */,
+				F81D82C721FF63FA0043F781 /* ViewModel */,
 				F81D82BC21FF4A160043F781 /* ViewController */,
 				F8BB4A8021FE693800B1C723 /* AppDelegate.swift */,
-				F8BB4A8221FE693800B1C723 /* ViewController.swift */,
 				F8BB4A8421FE693800B1C723 /* Main.storyboard */,
 				F8BB4A8721FE693800B1C723 /* Assets.xcassets */,
 				F8BB4A8921FE693800B1C723 /* LaunchScreen.storyboard */,
@@ -207,18 +231,22 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftDemoProject/Pods-SwiftDemoProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftExt.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -254,8 +282,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8BB4A8321FE693800B1C723 /* ViewController.swift in Sources */,
+				F81D82C021FF4F240043F781 /* LoginViewController.swift in Sources */,
 				F8BB4A8121FE693800B1C723 /* AppDelegate.swift in Sources */,
+				F81D82CB21FF8A220043F781 /* LoginViewModel.swift in Sources */,
+				F81D82C421FF5F590043F781 /* UIColorExtension.swift in Sources */,
+				F81D82C621FF61D30043F781 /* CALayerExtension.swift in Sources */,
+				F81D82C921FF7EA20043F781 /* UIScreenExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
