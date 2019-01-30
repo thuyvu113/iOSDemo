@@ -12,9 +12,17 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites":[
+    "rewrites": [
       {
-        "source": "/api/v1/**",
+        "source": "genres",
+        "function": "api"
+      }, 
+      {
+        "source": "movies",
+        "function": "api"
+      },
+      {
+        "source": "login",
         "function": "api"
       }
     ]
