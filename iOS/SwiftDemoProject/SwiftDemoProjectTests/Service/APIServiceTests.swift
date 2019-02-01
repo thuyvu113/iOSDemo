@@ -57,7 +57,7 @@ class APIServiceTests: XCTestCase {
   
   func testLoginFailed() {
     let email = "example@abc.com"
-    let password = ""
+    let password = "1231".toMD5()
     let promise = expectation(description: "Login Failed")
     
     service.login(email: email, password: password).subscribe(onNext: { user in
