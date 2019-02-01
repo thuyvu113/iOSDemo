@@ -116,6 +116,7 @@ export class RequestHandler {
 			if (results.length === 1) {
 				const user = results[0];
 				if (user.password === data["password"]) {
+					delete user.password
 					response = {
 						status: 1,
 						data: user
