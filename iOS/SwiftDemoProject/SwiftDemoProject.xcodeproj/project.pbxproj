@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		65D8EA73F26DDC7FAD7B8E31 /* Pods_SwiftDemoProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B199F0C7D549B508119D4F5 /* Pods_SwiftDemoProject.framework */; };
 		B9A7E4FE34E43C2595B24C84 /* Pods_SwiftDemoProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E9C5D6AD443E53BF0C14408 /* Pods_SwiftDemoProjectTests.framework */; };
+		F80685852204960C00A0FB68 /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80685822204960C00A0FB68 /* CALayerExtension.swift */; };
+		F80685862204960C00A0FB68 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80685832204960C00A0FB68 /* UIScreenExtension.swift */; };
+		F80685872204960C00A0FB68 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80685842204960C00A0FB68 /* UIColorExtension.swift */; };
+		F80685892204962600A0FB68 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80685882204962600A0FB68 /* LoginViewController.swift */; };
 		F81B9F0122035A3C00795E60 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F0022035A3C00795E60 /* APIService.swift */; };
 		F81B9F0322035AFB00795E60 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F0222035AFB00795E60 /* User.swift */; };
 		F81B9F0522035DFD00795E60 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F0422035DFD00795E60 /* Movie.swift */; };
@@ -17,10 +21,8 @@
 		F81B9F1E2203B6F400795E60 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F1D2203B6F400795E60 /* Genre.swift */; };
 		F81B9F202203B80D00795E60 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F1F2203B80D00795E60 /* ServerResponse.swift */; };
 		F81B9F232203C23000795E60 /* APIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F222203C23000795E60 /* APIServiceTests.swift */; };
-		F81B9F252203CBC900795E60 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F242203CBC900795E60 /* JSON.swift */; };
 		F81B9F272203E18100795E60 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F262203E18100795E60 /* StringExtension.swift */; };
 		F8BB4A8121FE693800B1C723 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB4A8021FE693800B1C723 /* AppDelegate.swift */; };
-		F8BB4A8321FE693800B1C723 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB4A8221FE693800B1C723 /* ViewController.swift */; };
 		F8BB4A8621FE693800B1C723 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8421FE693800B1C723 /* Main.storyboard */; };
 		F8BB4A8821FE693800B1C723 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8721FE693800B1C723 /* Assets.xcassets */; };
 		F8BB4A8B21FE693800B1C723 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8921FE693800B1C723 /* LaunchScreen.storyboard */; };
@@ -43,6 +45,10 @@
 		2B199F0C7D549B508119D4F5 /* Pods_SwiftDemoProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftDemoProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4CA3380124E092848F0015E /* Pods-SwiftDemoProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftDemoProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftDemoProjectTests/Pods-SwiftDemoProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DDCBBD1F907759FA196E7DAA /* Pods-SwiftDemoProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftDemoProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftDemoProject/Pods-SwiftDemoProject.release.xcconfig"; sourceTree = "<group>"; };
+		F80685822204960C00A0FB68 /* CALayerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
+		F80685832204960C00A0FB68 /* UIScreenExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
+		F80685842204960C00A0FB68 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		F80685882204962600A0FB68 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F81B9F0022035A3C00795E60 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F81B9F0222035AFB00795E60 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F81B9F0422035DFD00795E60 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -53,11 +59,9 @@
 		F81B9F1D2203B6F400795E60 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		F81B9F1F2203B80D00795E60 /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		F81B9F222203C23000795E60 /* APIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIServiceTests.swift; path = SwiftDemoProjectTests/Service/APIServiceTests.swift; sourceTree = SOURCE_ROOT; };
-		F81B9F242203CBC900795E60 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		F81B9F262203E18100795E60 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = SwiftDemoProject/Helpers/StringExtension.swift; sourceTree = SOURCE_ROOT; };
 		F8BB4A7D21FE693800B1C723 /* SwiftDemoProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDemoProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8BB4A8021FE693800B1C723 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F8BB4A8221FE693800B1C723 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F8BB4A8521FE693800B1C723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F8BB4A8721FE693800B1C723 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8BB4A8A21FE693800B1C723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 		F81D82BC21FF4A160043F781 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F80685882204962600A0FB68 /* LoginViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -167,7 +172,6 @@
 		F81D82BD21FF4A160043F781 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				F81B9F242203CBC900795E60 /* JSON.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -175,6 +179,9 @@
 		F81D82BE21FF4A170043F781 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F80685822204960C00A0FB68 /* CALayerExtension.swift */,
+				F80685842204960C00A0FB68 /* UIColorExtension.swift */,
+				F80685832204960C00A0FB68 /* UIScreenExtension.swift */,
 				F81B9F262203E18100795E60 /* StringExtension.swift */,
 			);
 			path = Extensions;
@@ -210,7 +217,6 @@
 				F81B9F1A2203615C00795E60 /* ViewModel */,
 				F81D82BC21FF4A160043F781 /* ViewController */,
 				F8BB4A8021FE693800B1C723 /* AppDelegate.swift */,
-				F8BB4A8221FE693800B1C723 /* ViewController.swift */,
 				F8BB4A8421FE693800B1C723 /* Main.storyboard */,
 				F8BB4A8721FE693800B1C723 /* Assets.xcassets */,
 				F8BB4A8921FE693800B1C723 /* LaunchScreen.storyboard */,
@@ -352,18 +358,22 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftDemoProject/Pods-SwiftDemoProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftExt.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -436,16 +446,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F80685892204962600A0FB68 /* LoginViewController.swift in Sources */,
 				F81B9F0322035AFB00795E60 /* User.swift in Sources */,
-				F8BB4A8321FE693800B1C723 /* ViewController.swift in Sources */,
 				F81B9F272203E18100795E60 /* StringExtension.swift in Sources */,
+				F80685862204960C00A0FB68 /* UIScreenExtension.swift in Sources */,
 				F81B9F1C2203617000795E60 /* LoginViewModel.swift in Sources */,
-				F81B9F252203CBC900795E60 /* JSON.swift in Sources */,
 				F81B9F0122035A3C00795E60 /* APIService.swift in Sources */,
+				F80685852204960C00A0FB68 /* CALayerExtension.swift in Sources */,
 				F8BB4A8121FE693800B1C723 /* AppDelegate.swift in Sources */,
 				F81B9F202203B80D00795E60 /* ServerResponse.swift in Sources */,
 				F81B9F0522035DFD00795E60 /* Movie.swift in Sources */,
 				F81B9F1E2203B6F400795E60 /* Genre.swift in Sources */,
+				F80685872204960C00A0FB68 /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

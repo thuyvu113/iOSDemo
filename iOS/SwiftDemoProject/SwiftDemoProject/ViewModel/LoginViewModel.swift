@@ -2,11 +2,7 @@
 //  LoginViewModel.swift
 //  SwiftDemoProject
 //
-<<<<<<< HEAD
-//  Created by thuyvd on 2019-01-31.
-=======
 //  Created by thuyvd on 2019-01-28.
->>>>>>> login-screen
 //  Copyright © 2019 Thuy Vu. All rights reserved.
 //
 
@@ -15,9 +11,6 @@ import RxSwift
 import RxCocoa
 
 class LoginViewModel {
-<<<<<<< HEAD
-  
-=======
   private let disposeBag = DisposeBag()
   
   var email = BehaviorRelay<String>(value: "")
@@ -57,5 +50,4 @@ class LoginViewModel {
       self?.loginInProgress.accept(false)
     }
   }
->>>>>>> login-screen
 }
