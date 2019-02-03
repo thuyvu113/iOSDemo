@@ -14,7 +14,7 @@ struct ServerResponse: Decodable {
 }
 
 enum ReponseData: Decodable {
-  case user(User), genres([Genre]), movies([Movie])
+  case null(), user(User), genres([Genre]), movies([Movie])
   
   enum DataServerError: Error {
     case unknownType
@@ -38,10 +38,10 @@ enum ReponseData: Decodable {
       return
     }
     
-    throw DataServerError.unknownType
+    self = .null()
   }
   
-  func get() -> Any {
+  func get() -> Any? {
     switch self {
     case .user(let user):
       return user
@@ -49,6 +49,8 @@ enum ReponseData: Decodable {
       return movies
     case .genres(let genres):
       return genres
+    default:
+      return nil
     }
   }
 }

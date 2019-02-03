@@ -28,11 +28,11 @@ class LoginViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    emailTF.text = "example@abc.com"
-    passwordTF.text = "123456"
-    
     bindViewModel()
     setupViews()
+    
+    viewModel.email.accept("example@abc.com")
+    viewModel.password.accept("1234567")
   }
   
   func setupViews() {
@@ -67,7 +67,9 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
   func bindViewModel() {
     emailTF.rx.text.unwrap().bind(to: viewModel.email).disposed(by: disposeBag)
+    viewModel.email.asObservable().bind(to: emailTF.rx.text).disposed(by: disposeBag)
     passwordTF.rx.text.unwrap().bind(to: viewModel.password).disposed(by: disposeBag)
+    viewModel.password.asObservable().bind(to: passwordTF.rx.text).disposed(by: disposeBag)
     
     viewModel.credentialsValid.bind(to: loginBtn.rx.isEnabled).disposed(by: disposeBag)
     loginBtn.rx.tap.asObservable().bind(to: viewModel.loginBtnTaped).disposed(by: disposeBag)
@@ -81,11 +83,29 @@ extension LoginViewController {
       guard let self = self else { return }
       self.showLodingProgress(show: event.element!)
     }.disposed(by: disposeBag)
-
+    
+    viewModel.loginSucessful.asObservable().subscribe { [weak self] event in
+      guard let self = self else { return }
+      self.handleLoginResults(success: event.element!)
+    }.disposed(by: disposeBag)
   }
   
 }
 
+//MARK: Login results
+extension LoginViewController {
+  func handleLoginResults(success: Bool) {
+    if success {
+      
+    } else {
+      let alertPopup = UIAlertController(title: "Login Failed",
+                                         message: "Please check your email and password",
+                                         preferredStyle: .alert)
+      alertPopup.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+      self.present(alertPopup, animated: true, completion: nil)
+    }
+  }
+}
 //MARK: Keyboard
 extension LoginViewController {
   @objc func keyboardWillShow(notification: Notification) {

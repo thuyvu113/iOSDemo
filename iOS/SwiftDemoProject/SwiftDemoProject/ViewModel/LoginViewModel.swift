@@ -12,11 +12,13 @@ import RxCocoa
 
 class LoginViewModel {
   private let disposeBag = DisposeBag()
+  private let service = APIService()
   
   var email = BehaviorRelay<String>(value: "")
   var password = BehaviorRelay<String>(value: "")
-  var loginBtnTaped = PublishSubject<Void>()
+  var loginBtnTaped = PublishRelay<Void>()
   var loginInProgress = BehaviorRelay<Bool>(value: false)
+  var loginSucessful = BehaviorRelay<Bool>(value: false)
   
   init() {
     loginBtnTaped.subscribe(onNext: { [weak self] in
@@ -46,8 +48,20 @@ class LoginViewModel {
     loginInProgress.accept(true)
     print("attempt to login")
     
-    DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in
-      self?.loginInProgress.accept(false)
-    }
+    service.login(email: email.value, password: password.value.toMD5())
+      .subscribe(onNext: {[weak self] user in
+        guard let self = self else { return }
+        
+        UserInfo.shared().updateUserInfo(user)
+        
+        self.loginInProgress.accept(false)
+        self.loginSucessful.accept(true)
+      }, onError: {[weak self] error in
+        guard let self = self else { return }
+        
+        print("Login error: \(error)")
+        self.loginInProgress.accept(false)
+        self.loginSucessful.accept(false)
+      }).disposed(by: disposeBag)
   }
 }
