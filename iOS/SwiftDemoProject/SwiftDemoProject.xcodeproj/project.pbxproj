@@ -13,6 +13,7 @@
 		F80685862204960C00A0FB68 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80685832204960C00A0FB68 /* UIScreenExtension.swift */; };
 		F80685872204960C00A0FB68 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80685842204960C00A0FB68 /* UIColorExtension.swift */; };
 		F80685892204962600A0FB68 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80685882204962600A0FB68 /* LoginViewController.swift */; };
+		F806858B2204A0C900A0FB68 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806858A2204A0C900A0FB68 /* UserInfo.swift */; };
 		F81B9F0122035A3C00795E60 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F0022035A3C00795E60 /* APIService.swift */; };
 		F81B9F0322035AFB00795E60 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F0222035AFB00795E60 /* User.swift */; };
 		F81B9F0522035DFD00795E60 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F0422035DFD00795E60 /* Movie.swift */; };
@@ -49,6 +50,7 @@
 		F80685832204960C00A0FB68 /* UIScreenExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
 		F80685842204960C00A0FB68 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		F80685882204962600A0FB68 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F806858A2204A0C900A0FB68 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		F81B9F0022035A3C00795E60 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F81B9F0222035AFB00795E60 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F81B9F0422035DFD00795E60 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				F81B9F0422035DFD00795E60 /* Movie.swift */,
 				F81B9F1D2203B6F400795E60 /* Genre.swift */,
 				F81B9F1F2203B80D00795E60 /* ServerResponse.swift */,
+				F806858A2204A0C900A0FB68 /* UserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				F81B9F0122035A3C00795E60 /* APIService.swift in Sources */,
 				F80685852204960C00A0FB68 /* CALayerExtension.swift in Sources */,
 				F8BB4A8121FE693800B1C723 /* AppDelegate.swift in Sources */,
+				F806858B2204A0C900A0FB68 /* UserInfo.swift in Sources */,
 				F81B9F202203B80D00795E60 /* ServerResponse.swift in Sources */,
 				F81B9F0522035DFD00795E60 /* Movie.swift in Sources */,
 				F81B9F1E2203B6F400795E60 /* Genre.swift in Sources */,

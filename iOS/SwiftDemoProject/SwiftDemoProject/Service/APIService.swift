@@ -100,6 +100,7 @@ class APIService {
               return
             }
             do {
+              try self.printResponse(data)
               let responseData = try JSONDecoder().decode(ServerResponse.self, from: data)
               if responseData.status == 1 {
                 let userInfo = responseData.data.get() as! User
@@ -116,5 +117,10 @@ class APIService {
         })
       return Disposables.create()
     })
+  }
+  
+  private func printResponse(_ reponse: Data) throws {
+    let object = try JSONSerialization.jsonObject(with: reponse, options: [])
+    print(object)
   }
 }
