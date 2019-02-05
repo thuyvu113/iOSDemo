@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
     setupViews()
     
     viewModel.email.accept("example@abc.com")
-    viewModel.password.accept("1234567")
+    viewModel.password.accept("123456")
   }
   
   func setupViews() {
@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
     passwordTF.resignFirstResponder()
   }
   
-  func showLodingProgress(show: Bool) {
+  func showLoadingProgress(show: Bool) {
     if show {
       HUD.show(.progress)
     } else {
@@ -81,7 +81,7 @@ extension LoginViewController {
     
     viewModel.loginInProgress.asObservable().distinctUntilChanged().subscribe { [weak self] event in
       guard let self = self else { return }
-      self.showLodingProgress(show: event.element!)
+      self.showLoadingProgress(show: event.element!)
     }.disposed(by: disposeBag)
     
     viewModel.loginSucessful.asObservable().subscribe { [weak self] event in
@@ -96,13 +96,21 @@ extension LoginViewController {
 extension LoginViewController {
   func handleLoginResults(success: Bool) {
     if success {
-      
+      self.performSegue(withIdentifier: "toMovieList", sender: self)
     } else {
       let alertPopup = UIAlertController(title: "Login Failed",
                                          message: "Please check your email and password",
                                          preferredStyle: .alert)
       alertPopup.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(alertPopup, animated: true, completion: nil)
+    }
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "toMovieList",
+      let destination = segue.destination as? MovieListViewController {
+      let viewModel = MovieListViewModel()
+      destination.viewModel = viewModel
     }
   }
 }

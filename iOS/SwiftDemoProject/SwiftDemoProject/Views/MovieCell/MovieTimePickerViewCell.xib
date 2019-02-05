@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MovieTimePickerViewCell" customModule="SwiftDemoProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fX4-8C-NsI">
+                        <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:40 am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ign-9H-OLe">
+                                <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Ign-9H-OLe" secondAttribute="bottom" id="1xr-li-ncI"/>
+                            <constraint firstItem="Ign-9H-OLe" firstAttribute="leading" secondItem="fX4-8C-NsI" secondAttribute="leading" id="FDA-w1-nPe"/>
+                            <constraint firstAttribute="trailing" secondItem="Ign-9H-OLe" secondAttribute="trailing" id="HnN-TP-aJC"/>
+                            <constraint firstItem="Ign-9H-OLe" firstAttribute="top" secondItem="fX4-8C-NsI" secondAttribute="top" id="I1n-mJ-JCe"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="fX4-8C-NsI" secondAttribute="bottom" id="K7x-pV-yfs"/>
+                <constraint firstItem="fX4-8C-NsI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="NcC-F7-TXj"/>
+                <constraint firstItem="fX4-8C-NsI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="hKo-L7-9Wh"/>
+                <constraint firstAttribute="trailing" secondItem="fX4-8C-NsI" secondAttribute="trailing" id="vxQ-HD-XJl"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="bgView" destination="fX4-8C-NsI" id="hmg-a0-Jq1"/>
+                <outlet property="timeLabel" destination="Ign-9H-OLe" id="oVH-ki-Pg4"/>
+            </connections>
+            <point key="canvasLocation" x="-96.799999999999997" y="82.758620689655174"/>
+        </collectionViewCell>
+    </objects>
+</document>

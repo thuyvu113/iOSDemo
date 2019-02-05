@@ -13,7 +13,7 @@
 		F80685862204960C00A0FB68 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80685832204960C00A0FB68 /* UIScreenExtension.swift */; };
 		F80685872204960C00A0FB68 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80685842204960C00A0FB68 /* UIColorExtension.swift */; };
 		F80685892204962600A0FB68 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80685882204962600A0FB68 /* LoginViewController.swift */; };
-		F806858B2204A0C900A0FB68 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806858A2204A0C900A0FB68 /* UserInfo.swift */; };
+		F806858B2204A0C900A0FB68 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806858A2204A0C900A0FB68 /* Session.swift */; };
 		F81B9F0122035A3C00795E60 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F0022035A3C00795E60 /* APIService.swift */; };
 		F81B9F0322035AFB00795E60 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F0222035AFB00795E60 /* User.swift */; };
 		F81B9F0522035DFD00795E60 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F0422035DFD00795E60 /* Movie.swift */; };
@@ -23,6 +23,27 @@
 		F81B9F202203B80D00795E60 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F1F2203B80D00795E60 /* ServerResponse.swift */; };
 		F81B9F232203C23000795E60 /* APIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F222203C23000795E60 /* APIServiceTests.swift */; };
 		F81B9F272203E18100795E60 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F262203E18100795E60 /* StringExtension.swift */; };
+		F81EB3032207379700C8BDCC /* PopcornNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81EB3022207379700C8BDCC /* PopcornNavigationBar.swift */; };
+		F81EB305220737A600C8BDCC /* PopcornNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F81EB304220737A600C8BDCC /* PopcornNavigationBar.xib */; };
+		F81EB3072207422100C8BDCC /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81EB3062207422100C8BDCC /* MovieListViewController.swift */; };
+		F81EB3092207423100C8BDCC /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81EB3082207423100C8BDCC /* MovieListViewModel.swift */; };
+		F81EB30B220755F100C8BDCC /* PopcornTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81EB30A220755F100C8BDCC /* PopcornTabBarView.swift */; };
+		F81EB30E220759FC00C8BDCC /* PopcornTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81EB30D220759FC00C8BDCC /* PopcornTabBarItemView.swift */; };
+		F81EB31122077D6800C8BDCC /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81EB30F22077D6800C8BDCC /* MovieTableViewCell.swift */; };
+		F81EB31222077D6800C8BDCC /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F81EB31022077D6800C8BDCC /* MovieTableViewCell.xib */; };
+		F81EB3142207923E00C8BDCC /* MovieCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81EB3132207923E00C8BDCC /* MovieCellViewModel.swift */; };
+		F81EB31622079ACE00C8BDCC /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81EB31522079ACE00C8BDCC /* ImageCache.swift */; };
+		F86D9E9F22089B6900E5DC68 /* MovieDateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86D9E9E22089B6900E5DC68 /* MovieDateTimePicker.swift */; };
+		F86D9EA122089B7900E5DC68 /* MovieDateTimePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = F86D9EA022089B7900E5DC68 /* MovieDateTimePicker.xib */; };
+		F86D9EA32208A0A100E5DC68 /* MovieDateTimePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86D9EA22208A0A100E5DC68 /* MovieDateTimePickerViewModel.swift */; };
+		F86D9EA62208AC1600E5DC68 /* MovieDatePickerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86D9EA52208AC1600E5DC68 /* MovieDatePickerControl.swift */; };
+		F86D9EA82208AC2100E5DC68 /* MovieDatePickerControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = F86D9EA72208AC2100E5DC68 /* MovieDatePickerControl.xib */; };
+		F86D9EAF2208DE8B00E5DC68 /* MovieTimePickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86D9EAD2208DE8B00E5DC68 /* MovieTimePickerViewCell.swift */; };
+		F86D9EB02208DE8B00E5DC68 /* MovieTimePickerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F86D9EAE2208DE8B00E5DC68 /* MovieTimePickerViewCell.xib */; };
+		F86D9EB22208F79D00E5DC68 /* SeatPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86D9EB12208F79D00E5DC68 /* SeatPickerView.swift */; };
+		F86D9EB42208F7AE00E5DC68 /* SeatPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F86D9EB32208F7AE00E5DC68 /* SeatPickerView.xib */; };
+		F86D9EB62209D66F00E5DC68 /* SeatPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86D9EB52209D66F00E5DC68 /* SeatPickerViewModel.swift */; };
+		F86D9EB82209D84000E5DC68 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86D9EB72209D84000E5DC68 /* Ticket.swift */; };
 		F8BB4A8121FE693800B1C723 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB4A8021FE693800B1C723 /* AppDelegate.swift */; };
 		F8BB4A8621FE693800B1C723 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8421FE693800B1C723 /* Main.storyboard */; };
 		F8BB4A8821FE693800B1C723 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8721FE693800B1C723 /* Assets.xcassets */; };
@@ -50,7 +71,7 @@
 		F80685832204960C00A0FB68 /* UIScreenExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
 		F80685842204960C00A0FB68 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		F80685882204962600A0FB68 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		F806858A2204A0C900A0FB68 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		F806858A2204A0C900A0FB68 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		F81B9F0022035A3C00795E60 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F81B9F0222035AFB00795E60 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F81B9F0422035DFD00795E60 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -62,6 +83,28 @@
 		F81B9F1F2203B80D00795E60 /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		F81B9F222203C23000795E60 /* APIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIServiceTests.swift; path = SwiftDemoProjectTests/Service/APIServiceTests.swift; sourceTree = SOURCE_ROOT; };
 		F81B9F262203E18100795E60 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = SwiftDemoProject/Helpers/StringExtension.swift; sourceTree = SOURCE_ROOT; };
+		F81EB3022207379700C8BDCC /* PopcornNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopcornNavigationBar.swift; sourceTree = "<group>"; };
+		F81EB304220737A600C8BDCC /* PopcornNavigationBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopcornNavigationBar.xib; sourceTree = "<group>"; };
+		F81EB3062207422100C8BDCC /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
+		F81EB3082207423100C8BDCC /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
+		F81EB30A220755F100C8BDCC /* PopcornTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopcornTabBarView.swift; sourceTree = "<group>"; };
+		F81EB30D220759FC00C8BDCC /* PopcornTabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopcornTabBarItemView.swift; sourceTree = "<group>"; };
+		F81EB30F22077D6800C8BDCC /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		F81EB31022077D6800C8BDCC /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
+		F81EB3132207923E00C8BDCC /* MovieCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellViewModel.swift; sourceTree = "<group>"; };
+		F81EB31522079ACE00C8BDCC /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		F86D9E9E22089B6900E5DC68 /* MovieDateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDateTimePicker.swift; sourceTree = "<group>"; };
+		F86D9EA022089B7900E5DC68 /* MovieDateTimePicker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDateTimePicker.xib; sourceTree = "<group>"; };
+		F86D9EA22208A0A100E5DC68 /* MovieDateTimePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDateTimePickerViewModel.swift; sourceTree = "<group>"; };
+		F86D9EA42208A32300E5DC68 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F86D9EA52208AC1600E5DC68 /* MovieDatePickerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDatePickerControl.swift; sourceTree = "<group>"; };
+		F86D9EA72208AC2100E5DC68 /* MovieDatePickerControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDatePickerControl.xib; sourceTree = "<group>"; };
+		F86D9EAD2208DE8B00E5DC68 /* MovieTimePickerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTimePickerViewCell.swift; sourceTree = "<group>"; };
+		F86D9EAE2208DE8B00E5DC68 /* MovieTimePickerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTimePickerViewCell.xib; sourceTree = "<group>"; };
+		F86D9EB12208F79D00E5DC68 /* SeatPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatPickerView.swift; sourceTree = "<group>"; };
+		F86D9EB32208F7AE00E5DC68 /* SeatPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeatPickerView.xib; sourceTree = "<group>"; };
+		F86D9EB52209D66F00E5DC68 /* SeatPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatPickerViewModel.swift; sourceTree = "<group>"; };
+		F86D9EB72209D84000E5DC68 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		F8BB4A7D21FE693800B1C723 /* SwiftDemoProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDemoProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8BB4A8021FE693800B1C723 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8BB4A8521FE693800B1C723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -132,6 +175,10 @@
 			isa = PBXGroup;
 			children = (
 				F81B9F1B2203617000795E60 /* LoginViewModel.swift */,
+				F81EB3082207423100C8BDCC /* MovieListViewModel.swift */,
+				F81EB3132207923E00C8BDCC /* MovieCellViewModel.swift */,
+				F86D9EA22208A0A100E5DC68 /* MovieDateTimePickerViewModel.swift */,
+				F86D9EB52209D66F00E5DC68 /* SeatPickerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -151,7 +198,8 @@
 				F81B9F0422035DFD00795E60 /* Movie.swift */,
 				F81B9F1D2203B6F400795E60 /* Genre.swift */,
 				F81B9F1F2203B80D00795E60 /* ServerResponse.swift */,
-				F806858A2204A0C900A0FB68 /* UserInfo.swift */,
+				F806858A2204A0C900A0FB68 /* Session.swift */,
+				F86D9EB72209D84000E5DC68 /* Ticket.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				F80685882204962600A0FB68 /* LoginViewController.swift */,
+				F81EB3062207422100C8BDCC /* MovieListViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -175,6 +224,7 @@
 		F81D82BD21FF4A160043F781 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F81EB31522079ACE00C8BDCC /* ImageCache.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -188,6 +238,43 @@
 				F81B9F262203E18100795E60 /* StringExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F81EB301220730D200C8BDCC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F86D9E9D22089B4100E5DC68 /* MovieCell */,
+				F81EB30C220759D600C8BDCC /* TabBar */,
+				F81EB3022207379700C8BDCC /* PopcornNavigationBar.swift */,
+				F81EB304220737A600C8BDCC /* PopcornNavigationBar.xib */,
+				F86D9EB12208F79D00E5DC68 /* SeatPickerView.swift */,
+				F86D9EB32208F7AE00E5DC68 /* SeatPickerView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F81EB30C220759D600C8BDCC /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				F81EB30A220755F100C8BDCC /* PopcornTabBarView.swift */,
+				F81EB30D220759FC00C8BDCC /* PopcornTabBarItemView.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		F86D9E9D22089B4100E5DC68 /* MovieCell */ = {
+			isa = PBXGroup;
+			children = (
+				F81EB30F22077D6800C8BDCC /* MovieTableViewCell.swift */,
+				F81EB31022077D6800C8BDCC /* MovieTableViewCell.xib */,
+				F86D9E9E22089B6900E5DC68 /* MovieDateTimePicker.swift */,
+				F86D9EA022089B7900E5DC68 /* MovieDateTimePicker.xib */,
+				F86D9EA52208AC1600E5DC68 /* MovieDatePickerControl.swift */,
+				F86D9EA72208AC2100E5DC68 /* MovieDatePickerControl.xib */,
+				F86D9EAD2208DE8B00E5DC68 /* MovieTimePickerViewCell.swift */,
+				F86D9EAE2208DE8B00E5DC68 /* MovieTimePickerViewCell.xib */,
+			);
+			path = MovieCell;
 			sourceTree = "<group>";
 		};
 		F8BB4A7421FE693700B1C723 = {
@@ -213,11 +300,13 @@
 		F8BB4A7F21FE693800B1C723 /* SwiftDemoProject */ = {
 			isa = PBXGroup;
 			children = (
+				F86D9EA42208A32300E5DC68 /* MyPlayground.playground */,
 				F81D82BE21FF4A170043F781 /* Extensions */,
 				F81D82BD21FF4A160043F781 /* Helpers */,
 				F81D82BA21FF4A160043F781 /* Model */,
 				F81D82BB21FF4A160043F781 /* Service */,
 				F81B9F1A2203615C00795E60 /* ViewModel */,
+				F81EB301220730D200C8BDCC /* Views */,
 				F81D82BC21FF4A160043F781 /* ViewController */,
 				F8BB4A8021FE693800B1C723 /* AppDelegate.swift */,
 				F8BB4A8421FE693800B1C723 /* Main.storyboard */,
@@ -321,8 +410,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8BB4A8B21FE693800B1C723 /* LaunchScreen.storyboard in Resources */,
+				F81EB31222077D6800C8BDCC /* MovieTableViewCell.xib in Resources */,
+				F86D9EB42208F7AE00E5DC68 /* SeatPickerView.xib in Resources */,
 				F8BB4A8821FE693800B1C723 /* Assets.xcassets in Resources */,
 				F8BB4A8621FE693800B1C723 /* Main.storyboard in Resources */,
+				F86D9EB02208DE8B00E5DC68 /* MovieTimePickerViewCell.xib in Resources */,
+				F81EB305220737A600C8BDCC /* PopcornNavigationBar.xib in Resources */,
+				F86D9EA122089B7900E5DC68 /* MovieDateTimePicker.xib in Resources */,
+				F86D9EA82208AC2100E5DC68 /* MovieDatePickerControl.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,15 +546,30 @@
 			files = (
 				F80685892204962600A0FB68 /* LoginViewController.swift in Sources */,
 				F81B9F0322035AFB00795E60 /* User.swift in Sources */,
+				F86D9EAF2208DE8B00E5DC68 /* MovieTimePickerViewCell.swift in Sources */,
 				F81B9F272203E18100795E60 /* StringExtension.swift in Sources */,
+				F86D9EA62208AC1600E5DC68 /* MovieDatePickerControl.swift in Sources */,
+				F81EB3142207923E00C8BDCC /* MovieCellViewModel.swift in Sources */,
+				F81EB30E220759FC00C8BDCC /* PopcornTabBarItemView.swift in Sources */,
 				F80685862204960C00A0FB68 /* UIScreenExtension.swift in Sources */,
 				F81B9F1C2203617000795E60 /* LoginViewModel.swift in Sources */,
+				F81EB30B220755F100C8BDCC /* PopcornTabBarView.swift in Sources */,
 				F81B9F0122035A3C00795E60 /* APIService.swift in Sources */,
+				F86D9EA32208A0A100E5DC68 /* MovieDateTimePickerViewModel.swift in Sources */,
+				F86D9E9F22089B6900E5DC68 /* MovieDateTimePicker.swift in Sources */,
+				F81EB3072207422100C8BDCC /* MovieListViewController.swift in Sources */,
 				F80685852204960C00A0FB68 /* CALayerExtension.swift in Sources */,
+				F81EB3032207379700C8BDCC /* PopcornNavigationBar.swift in Sources */,
+				F81EB31622079ACE00C8BDCC /* ImageCache.swift in Sources */,
 				F8BB4A8121FE693800B1C723 /* AppDelegate.swift in Sources */,
-				F806858B2204A0C900A0FB68 /* UserInfo.swift in Sources */,
+				F806858B2204A0C900A0FB68 /* Session.swift in Sources */,
+				F86D9EB82209D84000E5DC68 /* Ticket.swift in Sources */,
+				F81EB3092207423100C8BDCC /* MovieListViewModel.swift in Sources */,
+				F81EB31122077D6800C8BDCC /* MovieTableViewCell.swift in Sources */,
 				F81B9F202203B80D00795E60 /* ServerResponse.swift in Sources */,
 				F81B9F0522035DFD00795E60 /* Movie.swift in Sources */,
+				F86D9EB62209D66F00E5DC68 /* SeatPickerViewModel.swift in Sources */,
+				F86D9EB22208F79D00E5DC68 /* SeatPickerView.swift in Sources */,
 				F81B9F1E2203B6F400795E60 /* Genre.swift in Sources */,
 				F80685872204960C00A0FB68 /* UIColorExtension.swift in Sources */,
 			);

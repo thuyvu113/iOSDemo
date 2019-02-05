@@ -18,7 +18,7 @@ class LoginViewModel {
   var password = BehaviorRelay<String>(value: "")
   var loginBtnTaped = PublishRelay<Void>()
   var loginInProgress = BehaviorRelay<Bool>(value: false)
-  var loginSucessful = BehaviorRelay<Bool>(value: false)
+  var loginSucessful = PublishRelay<Bool>()
   
   init() {
     loginBtnTaped.subscribe(onNext: { [weak self] in
@@ -45,23 +45,25 @@ class LoginViewModel {
   }
   
   private func attemptToLogin() {
-    loginInProgress.accept(true)
-    print("attempt to login")
-    
-    service.login(email: email.value, password: password.value.toMD5())
-      .subscribe(onNext: {[weak self] user in
-        guard let self = self else { return }
-        
-        UserInfo.shared().updateUserInfo(user)
-        
-        self.loginInProgress.accept(false)
-        self.loginSucessful.accept(true)
-      }, onError: {[weak self] error in
-        guard let self = self else { return }
-        
-        print("Login error: \(error)")
-        self.loginInProgress.accept(false)
-        self.loginSucessful.accept(false)
-      }).disposed(by: disposeBag)
+    self.loginSucessful.accept(true)
+      
+//    loginInProgress.accept(true)
+//    print("attempt to login")
+//
+//    service.login(email: email.value, password: password.value.toMD5())
+//      .subscribe(onNext: {[weak self] user in
+//        guard let self = self else { return }
+//
+//        Session.shared().updateUserInfo(user)
+//
+//        self.loginInProgress.accept(false)
+//        self.loginSucessful.accept(true)
+//      }, onError: {[weak self] error in
+//        guard let self = self else { return }
+//
+//        print("Login error: \(error)")
+//        self.loginInProgress.accept(false)
+//        self.loginSucessful.accept(false)
+//      }).disposed(by: disposeBag)
   }
 }
