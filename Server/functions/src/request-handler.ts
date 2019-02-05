@@ -25,7 +25,7 @@ interface Movie {
 interface Location {
 	id: string;
 	name: string;
-	showTimes: number[];
+	showTimes: string[];
 }
 
 interface APIResponse {
