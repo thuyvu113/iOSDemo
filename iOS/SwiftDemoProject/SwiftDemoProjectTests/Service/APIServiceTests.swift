@@ -55,6 +55,19 @@ class APIServiceTests: XCTestCase {
     waitForExpectations(timeout: 5, handler: nil)
   }
   
+  func testGetAllLocations() {
+    let promise = expectation(description: "Get locations successfuly")
+    
+    service.getAllLocations().subscribe(onNext: { genres in
+      promise.fulfill()
+    }, onError: { error in
+      XCTFail("Error: \(error)")
+    }).disposed(by: disposeBag)
+    
+    waitForExpectations(timeout: 5, handler: nil)
+  }
+
+  
   func testLoginFailed() {
     let email = "example@abc.com"
     let password = "1231".toMD5()

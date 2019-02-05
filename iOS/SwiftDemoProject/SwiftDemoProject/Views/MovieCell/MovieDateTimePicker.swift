@@ -12,7 +12,7 @@ import RxCocoa
 
 class MovieDateTimePicker: UIView {
   private let disposeBag = DisposeBag()
-  var viewModel: MovieDateTimePickerViewModel?
+  var viewModel: MovieDateTimePickerViewModel!
   
   @IBOutlet weak var datePickerView: UIStackView!
   @IBOutlet weak var leftArrowBtn: UIButton!
@@ -63,33 +63,52 @@ class MovieDateTimePicker: UIView {
     timePickerView.register(UINib(nibName: "MovieTimePickerViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "timeCell")
     
     let frame = locationScrollView.frame
-    for i in 1...4 {
-      let location = UILabel(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
-      location.font = UIFont.boldSystemFont(ofSize: 14)
-      location.textAlignment = .center
-      location.text = "Location \(i + 1)"
-      locationScrollView.addSubview(location)
-      locationViewList.append(location)
+    if let locations = viewModel.locations {
+      for location in locations {
+        let locationLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
+        locationLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        locationLabel.textAlignment = .center
+        locationLabel.text = location.name
+          locationScrollView.addSubview(locationLabel)
+        locationViewList.append(locationLabel)
+      }
     }
+    
     
     leftArrowBtn.rx.tap.asObservable().subscribe { [weak self] _ in
       guard let self = self else { return }
-      if self.curLocationIndex == 0 { return }
-      
       self.curLocationIndex -= 1
       let frame = self.locationViewList[self.curLocationIndex].frame
       self.locationScrollView.scrollRectToVisible(frame, animated: true)
+      self.timePickerView.reloadData()
+      self.updateLeftRightBtnAppearence()
     }.disposed(by: disposeBag)
     
     rightArrowBtn.rx.tap.asObservable().subscribe { [weak self] _ in
       guard let self = self else { return }
-      if self.curLocationIndex == self.locationViewList.count - 1 { return }
-      
       self.curLocationIndex += 1
       let frame = self.locationViewList[self.curLocationIndex].frame
       self.locationScrollView.scrollRectToVisible(frame, animated: true)
+      self.timePickerView.reloadData()
+      
+      self.updateLeftRightBtnAppearence()
     }.disposed(by: disposeBag)
 
+  }
+  
+  func updateLeftRightBtnAppearence() {
+    if self.curLocationIndex == 0 {
+      self.leftArrowBtn.isEnabled = false
+      self.leftArrowBtn.alpha = 0
+    } else if self.curLocationIndex == self.locationViewList.count - 1 {
+      self.rightArrowBtn.isEnabled = false
+      self.rightArrowBtn.alpha = 0
+    } else {
+      self.leftArrowBtn.isEnabled = true
+      self.leftArrowBtn.alpha = 1
+      self.rightArrowBtn.isEnabled = true
+      self.rightArrowBtn.alpha = 1
+    }
   }
   
   @objc func datePickerViewDidSelected(_ sender: MovieDatePickerControl) {
@@ -115,7 +134,7 @@ class MovieDateTimePicker: UIView {
 
 extension MovieDateTimePicker: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 16
+    return viewModel.getNumberOfShowTimes(locationIndex: curLocationIndex)
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

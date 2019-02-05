@@ -29,7 +29,7 @@ class MovieListViewController: UIViewController {
     popcornNaviBar.hideBackBtn()
     bindViewModel()
     setup()
-    viewModel?.getAllGenres()
+    viewModel?.getRequiredInfo()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -72,18 +72,16 @@ extension MovieListViewController {
       self.tableView.reloadData()
     }).disposed(by: disposeBag)
     
-//    viewModel?.loadingInProgress.asObservable().subscribe({ [weak self] event in
-//
-//    }).disposed(by: disposeBag)
-    
-    viewModel?.loadingGenreInProgress.asObservable().subscribe({ [weak self] event in
+    viewModel?.loadingInfoInProgress.asObservable().subscribe({ [weak self] event in
       guard let self = self else { return }
       self.showLoadingProgress(show: event.element!)
     }).disposed(by: disposeBag)
     
-    viewModel?.requestGenresSucessfull.asObservable().subscribe({ [weak self] _ in
+    viewModel?.requestInfoSucessfull.asObservable().subscribe({ [weak self] event in
       guard let self = self else { return }
-      self.updateGenresTabBar()
+      if event.element! {
+        self.updateGenresTabBar()
+      }
     }).disposed(by: disposeBag)
     
     tabBarView.selectedGenre.asObservable().subscribe { [weak self] event in

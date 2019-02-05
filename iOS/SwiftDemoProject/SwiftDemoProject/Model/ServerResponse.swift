@@ -14,7 +14,7 @@ struct ServerResponse: Decodable {
 }
 
 enum ReponseData: Decodable {
-  case null(), user(User), genres([Genre]), movies([Movie])
+  case null(), user(User), genres([Genre]), movies([Movie]), locations([Location])
   
   enum DataServerError: Error {
     case unknownType
@@ -38,6 +38,12 @@ enum ReponseData: Decodable {
       return
     }
     
+    if let locations = try? decoder.singleValueContainer().decode([Location].self) {
+      self = .locations(locations)
+      return
+    }
+
+    
     self = .null()
   }
   
@@ -49,6 +55,8 @@ enum ReponseData: Decodable {
       return movies
     case .genres(let genres):
       return genres
+    case .locations(let locations):
+      return locations
     default:
       return nil
     }

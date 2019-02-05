@@ -44,6 +44,7 @@
 		F86D9EB42208F7AE00E5DC68 /* SeatPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F86D9EB32208F7AE00E5DC68 /* SeatPickerView.xib */; };
 		F86D9EB62209D66F00E5DC68 /* SeatPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86D9EB52209D66F00E5DC68 /* SeatPickerViewModel.swift */; };
 		F86D9EB82209D84000E5DC68 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86D9EB72209D84000E5DC68 /* Ticket.swift */; };
+		F86D9EBC2209E20100E5DC68 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86D9EBB2209E20100E5DC68 /* Location.swift */; };
 		F8BB4A8121FE693800B1C723 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB4A8021FE693800B1C723 /* AppDelegate.swift */; };
 		F8BB4A8621FE693800B1C723 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8421FE693800B1C723 /* Main.storyboard */; };
 		F8BB4A8821FE693800B1C723 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8721FE693800B1C723 /* Assets.xcassets */; };
@@ -105,6 +106,7 @@
 		F86D9EB32208F7AE00E5DC68 /* SeatPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeatPickerView.xib; sourceTree = "<group>"; };
 		F86D9EB52209D66F00E5DC68 /* SeatPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatPickerViewModel.swift; sourceTree = "<group>"; };
 		F86D9EB72209D84000E5DC68 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		F86D9EBB2209E20100E5DC68 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		F8BB4A7D21FE693800B1C723 /* SwiftDemoProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDemoProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8BB4A8021FE693800B1C723 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8BB4A8521FE693800B1C723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 		F81D82BA21FF4A160043F781 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F86D9EBB2209E20100E5DC68 /* Location.swift */,
 				F81B9F0222035AFB00795E60 /* User.swift */,
 				F81B9F0422035DFD00795E60 /* Movie.swift */,
 				F81B9F1D2203B6F400795E60 /* Genre.swift */,
@@ -550,6 +553,7 @@
 				F81B9F272203E18100795E60 /* StringExtension.swift in Sources */,
 				F86D9EA62208AC1600E5DC68 /* MovieDatePickerControl.swift in Sources */,
 				F81EB3142207923E00C8BDCC /* MovieCellViewModel.swift in Sources */,
+				F86D9EBC2209E20100E5DC68 /* Location.swift in Sources */,
 				F81EB30E220759FC00C8BDCC /* PopcornTabBarItemView.swift in Sources */,
 				F80685862204960C00A0FB68 /* UIScreenExtension.swift in Sources */,
 				F81B9F1C2203617000795E60 /* LoginViewModel.swift in Sources */,

@@ -50,7 +50,39 @@ class APIService {
     })
   }
   
-  func getAllGenres() -> Observable<[Genre]> {
+  func getAllLocations() -> Observable<[Location]?> {
+    return Observable.create({ observer -> Disposable in
+      let url = "https://iosdemono1.firebaseapp.com/locations"
+      Alamofire.request(url)
+        .validate()
+        .responseJSON(completionHandler: { response in
+          switch response.result {
+          case .success:
+            guard let data = response.data else {
+              observer.onNext(nil)
+              return
+            }
+            do {
+              let responseData = try JSONDecoder().decode(ServerResponse.self, from: data)
+              if responseData.status == 1 {
+                let locations = responseData.data.get() as! [Location]
+                observer.onNext(locations)
+              } else {
+                observer.onNext(nil)
+              }
+            } catch {
+              observer.onNext(nil)
+            }
+          case .failure:
+            observer.onNext(nil)
+          }
+        })
+      
+      return Disposables.create()
+    })
+  }
+  
+  func getAllGenres() -> Observable<[Genre]?> {
     return Observable.create({ observer -> Disposable in
       let url = "https://iosdemono1.firebaseapp.com/genres"
       Alamofire.request(url)
@@ -59,7 +91,7 @@ class APIService {
           switch response.result {
           case .success:
             guard let data = response.data else {
-              observer.onError(response.error ?? APIResponseError.notFound)
+              observer.onNext(nil)
               return
             }
             do {
@@ -68,13 +100,13 @@ class APIService {
                 let genres = responseData.data.get() as! [Genre]
                 observer.onNext(genres)
               } else {
-                observer.onError(APIResponseError.requestFailed)
+                observer.onNext(nil)
               }
             } catch {
-              observer.onError(error)
+              observer.onNext(nil)
             }
-          case .failure(let error):
-            observer.onError(error)
+          case .failure:
+            observer.onNext(nil)
           }
         })
       

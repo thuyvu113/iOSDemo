@@ -14,6 +14,7 @@ class Session {
   var userInfo: User?
   var genres: [String: Genre] = [:]
   var genresList: [Genre] = []
+  var locationsList: [Location] = []
   
   func updateUserInfo(_ user: User) {
     userInfo = user
@@ -25,6 +26,10 @@ class Session {
     for genre in genres {
       self.genres[genre.id] = genre
     }
+  }
+  
+  func updateLocations(_ locations: [Location]) {
+    locationsList.append(contentsOf: locations)
   }
   
   func getGenreById(_ id: String) -> Genre? {

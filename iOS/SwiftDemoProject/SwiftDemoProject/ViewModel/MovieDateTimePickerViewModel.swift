@@ -38,6 +38,11 @@ struct CalendarDay {
 }
 
 class MovieDateTimePickerViewModel {
+  var locations: [Location]?
+  
+  init() {
+    locations = Session.shared.locationsList
+  }
   
   func getSevenDays() -> [CalendarDay] {
     var sevenDays: [CalendarDay] = []
@@ -49,5 +54,32 @@ class MovieDateTimePickerViewModel {
       sevenDays.append(CalendarDay(day: day, weekday: weekday))
     }
     return sevenDays
+  }
+  
+  func getNumberOfShowTimes(locationIndex: Int) -> Int{
+    if let locations = self.locations {
+      return locations[locationIndex].showTimes.count
+    }
+    
+    return 0
+  }
+  
+  func getLocationName(locationIndex: Int) -> String {
+    if let locations = self.locations {
+      return locations[locationIndex].name
+    }
+    
+    return ""
+  }
+  
+  func getShowTimeString(locationIndex: Int, showTimeIndex: Int) -> String {
+    if let locations = self.locations {
+      let showTimes = locations[locationIndex].showTimes
+      for time in showTimes {
+        Date(
+      }
+    }
+    
+    return ""
   }
 }

@@ -15,13 +15,14 @@ class MovieListViewModel {
   private let service = APIService()
   
   var genres: [Genre] = []
+  var locations: [Location] = []
   private var movies: [String: [Movie]] = [:]
   
   var curGenre: Genre?
-  var loadingGenreInProgress = BehaviorRelay<Bool>(value: false)
+  var loadingInfoInProgress = BehaviorRelay<Bool>(value: false)
   var loadingMovieInProgress = BehaviorRelay<Bool>(value: false)
   var requestMovieSuccessful = PublishRelay<Void>()
-  var requestGenresSucessfull = PublishRelay<Void>()
+  var requestInfoSucessfull = PublishRelay<Bool>()
   
   var selectedRowIndex = -1;
   
@@ -53,19 +54,28 @@ class MovieListViewModel {
 
 //MARK: API Service
 extension MovieListViewModel {
-  func getAllGenres() {
-    loadingGenreInProgress.accept(true)
+  func getRequiredInfo() {
+    loadingInfoInProgress.accept(true)
+
+    let genreInfo = service.getAllGenres()
+    let locationInfo = service.getAllLocations()
     
-    service.getAllGenres().subscribe(onNext: { [weak self] genres in
+    Observable.zip(genreInfo, locationInfo) { ($0, $1) }.subscribe(onNext: { [weak self] result in
       guard let self = self else { return }
-      Session.shared.updateGenres(genres)
-      self.genres = Session.shared.genresList
-      self.requestGenresSucessfull.accept(())
-      self.loadingGenreInProgress.accept(false)
-      }, onError: { error in
-        self.loadingGenreInProgress.accept(false)
+      if let genres = result.0, let locations = result.1 {
+        Session.shared.updateGenres(genres)
+        Session.shared.updateLocations(locations)
+        self.genres = genres
+        self.locations = locations
+        self.requestInfoSucessfull.accept(true)
+      } else {
+        self.requestInfoSucessfull.accept(false)
+      }
+      
+      self.loadingInfoInProgress.accept(false)
     }).disposed(by: disposeBag)
   }
+
   
   func getMovieByGenre(_ genreId: String) {
     loadingMovieInProgress.accept(true)
@@ -75,8 +85,7 @@ extension MovieListViewModel {
       self.movies[genreId] = movies
       self.requestMovieSuccessful.accept(())
       self.loadingMovieInProgress.accept(false)
-      }, onError: { error in
-        
+      }, onError: { _ in
         self.loadingMovieInProgress.accept(false)
     }).disposed(by: disposeBag)
   }
