@@ -22,12 +22,46 @@ interface Movie {
 	cover: string;
 }
 
+interface Location {
+	id: string;
+	name: string;
+	showTimes: number[];
+}
+
 interface APIResponse {
 	status: number;
 	data: any;
 }
 
 export class RequestHandler {
+
+	getAllLocations(db: any): Promise<any> {
+		const docRef = db.collection("locations");
+
+		let response: APIResponse  = {
+										status: 0,
+										data: null
+									};
+		return docRef.get().then(snapshot => {
+			const results: Location[] = [];
+            snapshot.forEach(doc => {
+            	const location: Location = {
+            		id: doc.id,
+            		name: doc.data().name,
+            		showTimes: doc.data().show_times 
+            	}
+            	
+            	results.push(location);
+            })
+
+            response = {
+            	status: 1,
+            	data: results
+            };
+            
+            return response;
+        });
+	}
 
 	getAllGenres(db: any): Promise<any> {
 		const docRef = db.collection("genres");

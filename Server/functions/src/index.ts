@@ -25,6 +25,10 @@ app.get("/movies", (req, res) => {
 	requestHandler.getMovies(db, req.query).then(doc => res.status(200).send(doc)).catch(() => console.log("Error"));
 });
 
+app.get("/locations", (req, res) => {
+	requestHandler.getAllLocations(db).then(doc => res.status(200).send(doc)).catch(() => console.log("Error"));
+});
+
 app.post("/login", (req, res) => {
 	requestHandler.login(db, req.body).then(doc => res.status(200).send(doc)).catch(() => "abcs");
 });
