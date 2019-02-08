@@ -53,6 +53,11 @@ class SettingsViewController: UIViewController {
         self.savePasswordFailed()
       }
     }).disposed(by: disposeBag)
+    
+    popcornNaviBar.backBtn.rx.tap.asObservable().subscribe { [weak self] _ in
+      guard let self = self else { return}
+      self.navigationController?.popViewController(animated: true)
+      }.disposed(by: disposeBag)
   }
   
   func showTouchIDLoginChangeAlert(isOn: Bool) {
@@ -60,6 +65,10 @@ class SettingsViewController: UIViewController {
       let alertView = UIAlertController(title: "Touch ID",
                                         message: "Please enter current password",
                                         preferredStyle: .alert)
+      alertView.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+        self.viewModel.touchIDLogin.accept(false)
+      }))
+
       alertView.addAction(UIAlertAction(title: "Enable", style: .default, handler: { _ in
         if let password = alertView.textFields?[0].text {
           self.viewModel.savePassword(password)
@@ -75,7 +84,10 @@ class SettingsViewController: UIViewController {
       let alertView = UIAlertController(title: "Disable Touch ID",
                                         message: "Are you sure you want to disable Touch ID Login?",
                                         preferredStyle: .alert)
-      alertView.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+      alertView.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+        self.viewModel.touchIDLogin.accept(true)
+      }))
+      
       alertView.addAction(UIAlertAction(title: "Disable", style: .default, handler: { _ in
         self.viewModel.deletePassword()
       }))
@@ -133,7 +145,7 @@ extension SettingsViewController: UITableViewDataSource {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "touchIDCell", for: indexPath)
     let switchBtn = cell.viewWithTag(21) as! UISwitch
-    switchBtn.rx.isOn.changed.asObservable().distinctUntilChanged()
+    switchBtn.rx.isOn.changed.asObservable()
       .bind(to: viewModel.touchIDLoginDidChange).disposed(by: disposeBag)
     viewModel.touchIDLogin.asObservable().bind(to: switchBtn.rx.isOn).disposed(by: disposeBag)
     viewModel.touchIDEnabled.asObservable().bind(to: switchBtn.rx.isEnabled).disposed(by: disposeBag)

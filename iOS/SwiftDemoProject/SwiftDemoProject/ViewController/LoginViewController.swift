@@ -21,6 +21,8 @@ class LoginViewController: UIViewController {
   
   @IBOutlet weak var emailBox: UIView!
   @IBOutlet weak var passwordBox: UIView!
+  @IBOutlet weak var touchIDBox: UIView!
+  @IBOutlet weak var touchIDBtn: UIButton!
   
   var viewModel = LoginViewModel()
   var disposeBag = DisposeBag()
@@ -30,9 +32,6 @@ class LoginViewController: UIViewController {
     
     bindViewModel()
     setupViews()
-    
-    viewModel.email.accept("example@abc.com")
-    viewModel.password.accept("123456")
   }
   
   func setupViews() {
@@ -47,6 +46,20 @@ class LoginViewController: UIViewController {
     
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)),
                                            name: UIResponder.keyboardWillHideNotification, object: nil)
+    
+    touchIDBox.layer.cornerRadius = 10
+    touchIDBox.layer.borderWidth = 1
+    touchIDBox.layer.borderColor = UIColor.init(RGBA: [229, 57, 53, 100]).cgColor
+    
+    if let email = Helper.getSavedUser() {
+      loginBtn.isHidden = true
+      passwordBox.isHidden = true
+      viewModel.email.accept(email)
+    } else {
+      touchIDBox.isHidden = true
+      viewModel.email.accept("example@abc.com")
+      viewModel.password.accept("123456")
+    }
   }
   
   @objc func hideKeyboard() {
@@ -56,9 +69,21 @@ class LoginViewController: UIViewController {
   
   func showLoadingProgress(show: Bool) {
     if show {
-      HUD.show(.progress)
+      DispatchQueue.main.async {
+        HUD.show(.progress)
+      }
     } else {
-      HUD.hide()
+      DispatchQueue.main.async {
+        HUD.hide()
+      }
+    }
+  }
+  
+  func hideTouchID() {
+    DispatchQueue.main.async {
+      self.loginBtn.isHidden = false
+      self.passwordBox.isHidden = false
+      self.touchIDBox.isHidden = true
     }
   }
 }
@@ -72,7 +97,12 @@ extension LoginViewController {
     viewModel.password.asObservable().bind(to: passwordTF.rx.text).disposed(by: disposeBag)
     
     viewModel.credentialsValid.bind(to: loginBtn.rx.isEnabled).disposed(by: disposeBag)
-    loginBtn.rx.tap.asObservable().bind(to: viewModel.loginBtnTaped).disposed(by: disposeBag)
+    loginBtn.rx.tap
+      .debounce(1.0, scheduler: MainScheduler.instance).asObservable()
+      .bind(to: viewModel.loginBtnTaped).disposed(by: disposeBag)
+    touchIDBtn.rx.tap
+      .debounce(1.0, scheduler: MainScheduler.instance).asObservable()
+      .bind(to: viewModel.touchIdBtnTaped).disposed(by: disposeBag)
     
     viewModel.loginBtnTaped.subscribe(onNext: { [weak self] in
       guard let self = self else { return }
@@ -88,6 +118,11 @@ extension LoginViewController {
       guard let self = self else { return }
       self.handleLoginResults(success: event.element!)
     }.disposed(by: disposeBag)
+    
+    viewModel.loginByTouchIDFailed.asObservable().subscribe { [weak self] _ in
+      guard let self = self else { return }
+      self.hideTouchID()
+    }
   }
   
 }

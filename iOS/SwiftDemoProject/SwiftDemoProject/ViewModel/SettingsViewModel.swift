@@ -43,13 +43,12 @@ class SettingsViewModel {
   
   func savePassword(_ password: String) {
     self.checkPasswordInProgress.accept(true)
-    let md5Password = password.toMD5()
     let email = (Session.shared().userInfo?.email)!
     
-    service.login(email: email, password: md5Password)
+    service.login(email: email, password: password.toMD5())
       .subscribe(onNext: {[weak self] user in
         guard let self = self else { return }
-        self.savePasswordToKeychain(md5Password)
+        self.savePasswordToKeychain(password)
         self.checkPasswordInProgress.accept(false)
         self.passwordCorrect.accept(true)
         }, onError: {[weak self] error in

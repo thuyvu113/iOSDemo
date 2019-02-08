@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import LocalAuthentication
 
 class LoginViewModel {
   private let disposeBag = DisposeBag()
@@ -19,11 +20,18 @@ class LoginViewModel {
   var loginBtnTaped = PublishRelay<Void>()
   var loginInProgress = BehaviorRelay<Bool>(value: false)
   var loginSucessful = PublishRelay<Bool>()
+  var touchIdBtnTaped = PublishRelay<Void>()
+  var loginByTouchIDFailed = PublishRelay<Void>()
   
   init() {
     loginBtnTaped.subscribe(onNext: { [weak self] in
       guard let self = self else { return }
       self.attemptToLogin()
+    }).disposed(by: disposeBag)
+    
+    touchIdBtnTaped.subscribe(onNext: { [weak self] in
+      guard let self = self else { return }
+      self.loginWithTouchId()
     }).disposed(by: disposeBag)
   }
   
@@ -42,6 +50,23 @@ class LoginViewModel {
   
   private var passwordValid: Observable<Bool> {
     return password.asObservable().map{ $0.count >= 6}
+  }
+  
+  private func loginWithTouchId() {
+    LAContext().evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Please provide your fingerprint to login") { (success, error) in
+      if success {
+        do {
+          let keychainService = KeychainService()
+          let password = try keychainService.getPassword(forUser: Helper.getSavedUserId())
+          self.password.accept(password)
+          self.attemptToLogin()
+        } catch {
+          self.loginByTouchIDFailed.accept(())
+        }
+      } else {
+        self.loginByTouchIDFailed.accept(())
+      }
+    }
   }
   
   private func attemptToLogin() {      

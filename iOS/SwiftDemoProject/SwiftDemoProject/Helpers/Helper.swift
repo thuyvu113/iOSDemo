@@ -77,11 +77,17 @@ class Helper {
     return UserDefaults.standard.string(forKey: "savedUserEmail")
   }
   
+  static func getSavedUserId() -> String {
+    return UserDefaults.standard.string(forKey: "savedUserId")!
+  }
+  
   static func saveUser() {
     UserDefaults.standard.set(Session.shared().userInfo?.email, forKey: "savedUserEmail")
+    UserDefaults.standard.set(Session.shared().userInfo?.id, forKey: "savedUserId")
   }
 
   static func deleteSavedUser() {
     UserDefaults.standard.removeObject(forKey: "savedUserEmail")
+    UserDefaults.standard.removeObject(forKey: "savedUserId")
   }
 }
