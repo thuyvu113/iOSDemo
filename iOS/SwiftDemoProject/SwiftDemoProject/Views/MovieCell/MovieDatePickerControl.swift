@@ -13,6 +13,8 @@ class MovieDatePickerControl: UIControl {
   @IBOutlet weak var weekdayLabel: UILabel!
   @IBOutlet weak var weekdayBaseView: UIView!
   
+  var index: Int!
+  
   override var isSelected: Bool {
     didSet {
       self.hightlightView()
@@ -20,8 +22,8 @@ class MovieDatePickerControl: UIControl {
   }
   
   func setDay(_ day: CalendarDay) {
-    dayLabel.text = day.day
-    weekdayLabel.text = day.weekday
+    dayLabel.text = "\(day.day)"
+    weekdayLabel.text = day.weekdayFirstLetter()
   }
   
   override init(frame: CGRect) {

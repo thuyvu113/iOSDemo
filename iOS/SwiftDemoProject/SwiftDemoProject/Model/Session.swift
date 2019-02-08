@@ -9,12 +9,21 @@
 import Foundation
 
 class Session {
-  static let shared = Session()
+  private static let sharedInstance = Session()
+  
+  class func shared() -> Session {
+    return sharedInstance
+  }
   
   var userInfo: User?
   var genres: [String: Genre] = [:]
   var genresList: [Genre] = []
   var locationsList: [Location] = []
+  
+  var selectedMovie: Movie?
+  var selectedDateIndex: Int?
+  var selectedLocationIndex: Int?
+  var selectedTimeIndex: Int?
   
   func updateUserInfo(_ user: User) {
     userInfo = user

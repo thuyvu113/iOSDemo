@@ -43,12 +43,21 @@ class MovieListViewModel {
   }
   
   func selectedGenre(_ genre: Genre) {
+    resetSelection()
     curGenre = genre
     getMovieByGenre(genre.id)
   }
   
   func didSelecedRowAtIndex(_ index: Int) {
     selectedRowIndex = index
+  }
+  
+  func resetSelection() {
+    Session.shared().selectedMovie = nil
+    Session.shared().selectedDateIndex = nil
+    Session.shared().selectedLocationIndex = nil
+    Session.shared().selectedTimeIndex = nil
+    selectedRowIndex = -1
   }
 }
 
@@ -63,8 +72,8 @@ extension MovieListViewModel {
     Observable.zip(genreInfo, locationInfo) { ($0, $1) }.subscribe(onNext: { [weak self] result in
       guard let self = self else { return }
       if let genres = result.0, let locations = result.1 {
-        Session.shared.updateGenres(genres)
-        Session.shared.updateLocations(locations)
+        Session.shared().updateGenres(genres)
+        Session.shared().updateLocations(locations)
         self.genres = genres
         self.locations = locations
         self.requestInfoSucessfull.accept(true)

@@ -16,7 +16,11 @@ enum ImageCacheError: Int, Error {
 }
 
 class ImageCache {
-  static let shared = ImageCache()
+  private static let sharedInstance = ImageCache()
+  
+  class func shared() -> ImageCache {
+    return sharedInstance
+  }
   
   var cachedImages: [String: UIImage] = [:]
   

@@ -11,75 +11,121 @@ import RxSwift
 import RxCocoa
 
 struct CalendarDay {
-  let day: String
-  let weekday: String
+  let month: Int
+  let day: Int
+  let weekday: Int
   
-  init(day: Int, weekday: Int) {
-    self.day = "\(day)"
-    self.weekday = CalendarDay.weekdayString(weekday)
+  init(month: Int, day: Int, weekday: Int) {
+    self.month = month
+    self.day = day
+    self.weekday = weekday
   }
   
-  static func weekdayString(_ day: Int) -> String {
-    switch day {
-    case 1, 7:
-      return "S"
-    case 2:
-      return "M"
-    case 3, 5:
-      return "T"
-    case 4:
-      return "W"
-    case 6:
-      return "F"
-    default:
-      return ""
-    }
+  func monthName() -> String {
+    return DateFormatter().monthSymbols[month - 1]
+  }
+  
+  func weekdayFirstLetter() -> String {
+    let weekdayName = self.weekdayName()
+    return String(weekdayName.first!)
+  }
+  
+  func weekdayName() -> String {
+    return DateFormatter().weekdaySymbols[weekday - 1]
   }
 }
 
 class MovieDateTimePickerViewModel {
-  var locations: [Location]?
+  var locations: [Location]!
   
-  init() {
-    locations = Session.shared.locationsList
+  var seclectedTimeIndex = BehaviorRelay<Int>(value: -1)
+  var selectedLocationIndex = BehaviorRelay<Int>(value: 0)
+  var selectedDateIndex = BehaviorRelay<Int>(value: 0)
+  
+  var selectedEnoughInfo: Observable<Bool> {
+    return Observable.combineLatest(selectedDateIndex.asObservable(),
+                                    selectedLocationIndex.asObservable(),
+                                    seclectedTimeIndex.asObservable()) {($0 >= 0) && ($1 >= 0) && ($2 >= 0)}
   }
   
-  func getSevenDays() -> [CalendarDay] {
+  var dates: [CalendarDay]!
+  
+  init() {
+    dates = self.getSevenDays()
+    locations = Session.shared().locationsList
+  }
+  
+  func preLoadDataFromSession() {
+    if let dateIndex = Session.shared().selectedDateIndex {
+      selectedDateIndex.accept(dateIndex)
+    }
+    
+    if let locationIndex = Session.shared().selectedLocationIndex {
+      selectedLocationIndex.accept(locationIndex)
+    }
+    
+    if let timeIndex = Session.shared().selectedTimeIndex {
+      seclectedTimeIndex.accept(timeIndex)
+    }
+  }
+  
+  func reset() {
+    seclectedTimeIndex.accept(-1)
+    selectedDateIndex.accept(0)
+    selectedLocationIndex.accept(0)
+  }
+  
+  private func getSevenDays() -> [CalendarDay] {
     var sevenDays: [CalendarDay] = []
     let today = Date.init()
     for i in 0...7 {
       let nextDate = Calendar.current.date(byAdding: .day, value: i, to: today)
+      let month = Calendar.current.component(.month, from: nextDate!)
       let day = Calendar.current.component(.day, from: nextDate!)
       let weekday = Calendar.current.component(.weekday, from: nextDate!)
-      sevenDays.append(CalendarDay(day: day, weekday: weekday))
+      sevenDays.append(CalendarDay(month: month, day: day, weekday: weekday))
     }
     return sevenDays
   }
   
-  func getNumberOfShowTimes(locationIndex: Int) -> Int{
+  func getNumberOfShowTimes() -> Int{
     if let locations = self.locations {
-      return locations[locationIndex].showTimes.count
+      return locations[selectedLocationIndex.value].showTimes.count
     }
     
     return 0
   }
   
-  func getLocationName(locationIndex: Int) -> String {
+  func getLocationName() -> String {
     if let locations = self.locations {
-      return locations[locationIndex].name
+      return locations[selectedLocationIndex.value].name
     }
     
     return ""
   }
   
-  func getShowTimeString(locationIndex: Int, showTimeIndex: Int) -> String {
+  func getShowTimeString(atIndex: Int) -> String {
     if let locations = self.locations {
-      let showTimes = locations[locationIndex].showTimes
-      for time in showTimes {
-        Date(
-      }
+      let showTimes = locations[selectedLocationIndex.value].showTimes
+      return showTimes[atIndex]
     }
     
     return ""
+  }
+  
+  func getSelectedLocation() -> Location? {
+    if selectedLocationIndex.value >= 0 {
+      return locations[selectedLocationIndex.value]
+    }
+    
+    return nil
+  }
+  
+  func getSelectedDate() -> CalendarDay? {
+    if selectedDateIndex.value >= 0 {
+      return dates[selectedDateIndex.value]
+    }
+    
+    return nil
   }
 }

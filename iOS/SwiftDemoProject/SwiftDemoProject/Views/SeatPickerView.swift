@@ -10,9 +10,19 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol SeatPickerViewDelegate: class {
+  func checkoutTicket(_ ticket: Ticket)
+}
+
 class SeatPickerView: UIView {
   private let disposeBag = DisposeBag()
-  var viewModel: SeatPickerViewModel?
+  var viewModel: SeatPickerViewModel!
+  
+  weak var delegate: SeatPickerViewDelegate?
+  
+  @IBOutlet weak var movieTitleLabel: UILabel!
+  @IBOutlet weak var locationLabel: UILabel!
+  @IBOutlet weak var dateTimeLabel: UILabel!
   
   @IBOutlet weak var coverImage: UIImageView!
   @IBOutlet weak var coverMaskView: UIView!
@@ -20,6 +30,7 @@ class SeatPickerView: UIView {
   @IBOutlet weak var seatView: UIView!
   @IBOutlet weak var editBtn: UIButton!
   
+  @IBOutlet weak var checkoutBtn: UIButton!
   
   @IBOutlet weak var topViewLeadingConstraint: NSLayoutConstraint!
   @IBOutlet weak var topViewTrailingConstraint: NSLayoutConstraint!
@@ -31,10 +42,11 @@ class SeatPickerView: UIView {
   @IBOutlet weak var coverView: UIView!
   
   var anchorRect: CGRect?
-  var selectedSeats: NSMutableSet = NSMutableSet()
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    viewModel = SeatPickerViewModel()
+    
     topBgView.backgroundColor = UIColor(RGBA: [229, 57, 53, 100])
     topBgView.layer.masksToBounds = true
     
@@ -48,10 +60,27 @@ class SeatPickerView: UIView {
     editBtn.layer.addShadow(color: UIColor(RGBA: [0, 0, 0, 31]), x: 0, y: 8, blur: 10)
     
     buildSeatView()
+    
+    bindViewModel()
   }
   
   @IBAction func editButtonDidTap(_ sender: Any) {
     hideView()
+  }
+  
+  @IBAction func checkoutBtnDidTap(_ sender: Any) {
+    self.delegate?.checkoutTicket(viewModel.getTicketForNext())
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+      self.hideView()
+    }
+  }
+  
+  func bindViewModel() {
+    viewModel.movieTitle.asObservable().bind(to: movieTitleLabel.rx.text).disposed(by: disposeBag)
+    viewModel.movieLocation.asObservable().bind(to: locationLabel.rx.text).disposed(by: disposeBag)
+    viewModel.movieDateTime.asObservable().bind(to: dateTimeLabel.rx.text).disposed(by: disposeBag)
+    viewModel.movieCover.asObservable().bind(to: coverImage.rx.image).disposed(by: disposeBag)
+    viewModel.numberOfSelectedSeat.map({$0 > 0}).bind(to: checkoutBtn.rx.isEnabled).disposed(by: disposeBag)    
   }
   
   private func collapseViewToRect(_ frame: CGRect) {
@@ -96,9 +125,9 @@ class SeatPickerView: UIView {
   
   func buildSeatView() {
     let rowNames = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
-    let seatSpace: CGFloat = 11
+    let seatSpace: CGFloat = 9
     let aisleSpace: CGFloat = 20
-    let startX = (UIScreen.screenWidth() - 14 * 2 - (14 * 11 + 11 * seatSpace + 2 * aisleSpace)) / 2
+    let startX = (UIScreen.screenWidth() - 14 * 2 - (14 * 15 + 11 * seatSpace + 2 * aisleSpace)) / 2
     var x: CGFloat = startX
     var y: CGFloat = 0
     for i in 1...9 {
@@ -110,15 +139,20 @@ class SeatPickerView: UIView {
           rowLabel.textColor = UIColor(RGBA: [221, 148, 148, 100])
           rowLabel.textAlignment = .center
           seatView.addSubview(rowLabel)
-          x += 11
+          x += 15
           x += seatSpace
         }
         let seat = UIButton(type: .custom)
-        seat.frame = CGRect(x: x, y: y, width: 11, height: 11)
+        seat.frame = CGRect(x: x, y: y, width: 15, height: 15)
         seat.setImage(UIImage(named: "seat_empty"), for: .normal)
+        seat.contentMode = .scaleAspectFit
         seatView.addSubview(seat)
         seat.addTarget(self, action: #selector(didSelectedSeat(_:)), for: .touchUpInside)
-        x += 11
+        let tag = createTag(row: i, column: j)
+        seat.tag = tag
+        viewModel.seatNames[tag] = "\(rowNames[i-1])\(j)"
+          
+        x += 15
         if j == 2 || j == 10 {
           x += aisleSpace
         } else {
@@ -136,7 +170,7 @@ class SeatPickerView: UIView {
         }
       }
       
-      y += 11
+      y += 15
       if i == 4 || i == 8 {
         y += aisleSpace
       } else {
@@ -146,19 +180,25 @@ class SeatPickerView: UIView {
   }
   
   @objc func didSelectedSeat(_ sender: UIButton) {
-    if selectedSeats.contains(sender) {
+    if viewModel.selectedSeats.contains(sender) {
       sender.setImage(UIImage(named: "seat_empty"), for: .normal)
-      selectedSeats.remove(sender)
+      viewModel.removeSelectedSeat(sender)
     } else {
       sender.setImage(UIImage(named: "seat_selected"), for: .normal)
-      selectedSeats.add(sender)
+      viewModel.addSelectedSeat(sender)
     }
   }
   
   func clearSelectedSeats() {
-    for seat in selectedSeats {
+    for seat in viewModel.selectedSeats {
       (seat as! UIButton).setImage(UIImage(named: "seat_empty"), for: .normal)
     }
-    selectedSeats.removeAllObjects()
+    viewModel.clearAllSelectedSeats()
   }
+  
+  func createTag(row: Int, column: Int) -> Int {
+    let string = "\(row)\(column)"
+    return Int(string)!
+  }
+  
 }

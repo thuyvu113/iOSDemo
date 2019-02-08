@@ -30,4 +30,8 @@ class PopcornNavigationBar: UIView {
   func hideBackBtn() {
     backBtn.isHidden = true
   }
+  
+  func hideSettingsBtn() {
+    settingsBtn.isHidden = true
+  }
 }

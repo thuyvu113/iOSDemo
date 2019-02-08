@@ -49,6 +49,13 @@
 		F8BB4A8621FE693800B1C723 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8421FE693800B1C723 /* Main.storyboard */; };
 		F8BB4A8821FE693800B1C723 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8721FE693800B1C723 /* Assets.xcassets */; };
 		F8BB4A8B21FE693800B1C723 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8921FE693800B1C723 /* LaunchScreen.storyboard */; };
+		F8E41B04220B2E08006133EA /* CheckOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E41B03220B2E08006133EA /* CheckOutViewController.swift */; };
+		F8E41B06220B3F67006133EA /* CheckOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E41B05220B3F67006133EA /* CheckOutViewModel.swift */; };
+		F8E41B08220B428D006133EA /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E41B07220B428D006133EA /* Helper.swift */; };
+		F8E41B0E220B99D4006133EA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E41B0D220B99D4006133EA /* SettingsViewController.swift */; };
+		F8E41B10220B9B65006133EA /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E41B0F220B9B65006133EA /* SettingsViewModel.swift */; };
+		F8E41B12220C82FD006133EA /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E41B11220C82FD006133EA /* KeychainService.swift */; };
+		F8E41B14220C8A36006133EA /* KeychainServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E41B13220C8A36006133EA /* KeychainServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +120,13 @@
 		F8BB4A8721FE693800B1C723 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8BB4A8A21FE693800B1C723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8BB4A8C21FE693800B1C723 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8E41B03220B2E08006133EA /* CheckOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutViewController.swift; sourceTree = "<group>"; };
+		F8E41B05220B3F67006133EA /* CheckOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutViewModel.swift; sourceTree = "<group>"; };
+		F8E41B07220B428D006133EA /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		F8E41B0D220B99D4006133EA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F8E41B0F220B9B65006133EA /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		F8E41B11220C82FD006133EA /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		F8E41B13220C8A36006133EA /* KeychainServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +195,8 @@
 				F81EB3132207923E00C8BDCC /* MovieCellViewModel.swift */,
 				F86D9EA22208A0A100E5DC68 /* MovieDateTimePickerViewModel.swift */,
 				F86D9EB52209D66F00E5DC68 /* SeatPickerViewModel.swift */,
+				F8E41B05220B3F67006133EA /* CheckOutViewModel.swift */,
+				F8E41B0F220B9B65006133EA /* SettingsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -188,6 +204,7 @@
 		F81B9F212203C20C00795E60 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				F8E41B13220C8A36006133EA /* KeychainServiceTests.swift */,
 				F81B9F222203C23000795E60 /* APIServiceTests.swift */,
 			);
 			path = Service;
@@ -211,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				F81B9F0022035A3C00795E60 /* APIService.swift */,
+				F8E41B11220C82FD006133EA /* KeychainService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -220,6 +238,8 @@
 			children = (
 				F80685882204962600A0FB68 /* LoginViewController.swift */,
 				F81EB3062207422100C8BDCC /* MovieListViewController.swift */,
+				F8E41B03220B2E08006133EA /* CheckOutViewController.swift */,
+				F8E41B0D220B99D4006133EA /* SettingsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -228,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				F81EB31522079ACE00C8BDCC /* ImageCache.swift */,
+				F8E41B07220B428D006133EA /* Helper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -538,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8E41B14220C8A36006133EA /* KeychainServiceTests.swift in Sources */,
 				F81B9F232203C23000795E60 /* APIServiceTests.swift in Sources */,
 				F81B9F1522035ED300795E60 /* LoginViewModelTests.swift in Sources */,
 			);
@@ -549,11 +571,15 @@
 			files = (
 				F80685892204962600A0FB68 /* LoginViewController.swift in Sources */,
 				F81B9F0322035AFB00795E60 /* User.swift in Sources */,
+				F8E41B0E220B99D4006133EA /* SettingsViewController.swift in Sources */,
 				F86D9EAF2208DE8B00E5DC68 /* MovieTimePickerViewCell.swift in Sources */,
 				F81B9F272203E18100795E60 /* StringExtension.swift in Sources */,
 				F86D9EA62208AC1600E5DC68 /* MovieDatePickerControl.swift in Sources */,
 				F81EB3142207923E00C8BDCC /* MovieCellViewModel.swift in Sources */,
+				F8E41B04220B2E08006133EA /* CheckOutViewController.swift in Sources */,
+				F8E41B08220B428D006133EA /* Helper.swift in Sources */,
 				F86D9EBC2209E20100E5DC68 /* Location.swift in Sources */,
+				F8E41B06220B3F67006133EA /* CheckOutViewModel.swift in Sources */,
 				F81EB30E220759FC00C8BDCC /* PopcornTabBarItemView.swift in Sources */,
 				F80685862204960C00A0FB68 /* UIScreenExtension.swift in Sources */,
 				F81B9F1C2203617000795E60 /* LoginViewModel.swift in Sources */,
@@ -561,6 +587,7 @@
 				F81B9F0122035A3C00795E60 /* APIService.swift in Sources */,
 				F86D9EA32208A0A100E5DC68 /* MovieDateTimePickerViewModel.swift in Sources */,
 				F86D9E9F22089B6900E5DC68 /* MovieDateTimePicker.swift in Sources */,
+				F8E41B12220C82FD006133EA /* KeychainService.swift in Sources */,
 				F81EB3072207422100C8BDCC /* MovieListViewController.swift in Sources */,
 				F80685852204960C00A0FB68 /* CALayerExtension.swift in Sources */,
 				F81EB3032207379700C8BDCC /* PopcornNavigationBar.swift in Sources */,
@@ -568,6 +595,7 @@
 				F8BB4A8121FE693800B1C723 /* AppDelegate.swift in Sources */,
 				F806858B2204A0C900A0FB68 /* Session.swift in Sources */,
 				F86D9EB82209D84000E5DC68 /* Ticket.swift in Sources */,
+				F8E41B10220B9B65006133EA /* SettingsViewModel.swift in Sources */,
 				F81EB3092207423100C8BDCC /* MovieListViewModel.swift in Sources */,
 				F81EB31122077D6800C8BDCC /* MovieTableViewCell.swift in Sources */,
 				F81B9F202203B80D00795E60 /* ServerResponse.swift in Sources */,
@@ -771,6 +799,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = SwiftDemoProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -789,6 +818,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = SwiftDemoProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

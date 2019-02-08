@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol MovieTableViewCellDelegate: class {
-  func seatChoosingDidSeclected(sender: UIButton)
+  func seatChoosingDidSeclected(sender: UIButton, ticket: Ticket)
 }
 
 class MovieTableViewCell: UITableViewCell {
@@ -30,11 +30,15 @@ class MovieTableViewCell: UITableViewCell {
   
   @IBOutlet weak var movieDateTimePickerView: MovieDateTimePicker!
   
-  var viewModel: MovieCellViewModel?
+  var viewModel: MovieCellViewModel!
   weak var delegate: MovieTableViewCellDelegate?
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    setup()
+  }
+  
+  func setup() {
     self.backgroundColor = .clear
     self.layer.masksToBounds = true
     
@@ -46,16 +50,18 @@ class MovieTableViewCell: UITableViewCell {
     nextBtn.layer.addShadow(color: UIColor(RGBA: [229, 57, 53, 31]), x: 0, y: 6, blur: 15)
     nextBtn.rx.tap.asObservable().subscribe { [weak self] __ in
       guard let self = self else { return }
-      self.delegate?.seatChoosingDidSeclected(sender: self.nextBtn)
-    }.disposed(by: disposeBag)
+      self.delegate?.seatChoosingDidSeclected(sender: self.nextBtn, ticket: self.viewModel.createTicket())
+      }.disposed(by: disposeBag)
   }
   
   func updateMovie(_ movie: Movie, expanded: Bool = false) {
     if viewModel == nil {
       viewModel = MovieCellViewModel()
+      viewModel?.dateTimePickerViewModel = movieDateTimePickerView.viewModel
       bindViewModel()
     }
     
+    movieDateTimePickerView.viewModel.reset()
     viewModel?.movie.accept(movie)
     
     if expanded {
@@ -65,8 +71,15 @@ class MovieTableViewCell: UITableViewCell {
       bottomConstraint.constant = 20
       nextBtn.isHidden = true
     }
-    layoutIfNeeded()
+    self.layoutIfNeeded()
     movieDateTimePickerView.reloadLayoutIfNeeded()
+    
+    if let selectedMovie = Session.shared().selectedMovie {
+      if selectedMovie.id == movie.id {
+        movieDateTimePickerView.viewModel.preLoadDataFromSession()
+      }
+    }
+    
   }
   
   func bindViewModel() {
@@ -74,5 +87,19 @@ class MovieTableViewCell: UITableViewCell {
     viewModel?.movieInfo.asObservable().bind(to: movieInfoLabel.rx.text).disposed(by: disposeBag)
     viewModel?.movieIMDB.asObservable().bind(to: movieIMDBLabel.rx.text).disposed(by: disposeBag)
     viewModel?.moviePoster.asObservable().bind(to: posterImageView.rx.image).disposed(by: disposeBag)
+    
+    movieDateTimePickerView.viewModel.selectedEnoughInfo.asObservable().subscribe({ [weak self] event in
+      guard let self = self else { return }
+      if event.element! {
+        self.nextBtn.isEnabled = true
+        Session.shared().selectedMovie = self.viewModel?.movie.value
+        Session.shared().selectedDateIndex = self.movieDateTimePickerView.viewModel.selectedDateIndex.value
+        Session.shared().selectedLocationIndex = self.movieDateTimePickerView.viewModel.selectedLocationIndex.value
+        Session.shared().selectedTimeIndex = self.movieDateTimePickerView.viewModel.seclectedTimeIndex.value
+      } else {
+        self.nextBtn.isEnabled = false
+      }
+    }).disposed(by: disposeBag)
+    
   }
 }

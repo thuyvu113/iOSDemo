@@ -20,6 +20,8 @@ class MovieCellViewModel {
   var movieIMDB = BehaviorRelay<String>(value: "")
   var moviePoster = BehaviorRelay<UIImage?>(value: nil)
   
+  weak var dateTimePickerViewModel: MovieDateTimePickerViewModel!
+  
   init() {
     movie.asObservable().subscribe(onNext: { [weak self] movie in
       guard let self = self else { return }
@@ -29,11 +31,19 @@ class MovieCellViewModel {
     }).disposed(by: disposeBag)
   }
   
+  func createTicket() -> Ticket {
+    var ticket = Ticket(movie: movie.value!)
+    ticket.location = dateTimePickerViewModel.getSelectedLocation()
+    ticket.date = dateTimePickerViewModel.getSelectedDate()
+    ticket.timeIndex = dateTimePickerViewModel.seclectedTimeIndex.value
+    return ticket
+  }
+  
   private func updateMovie(_ movie: Movie) {
     movieTitle.accept(movie.title)
     var info = ""
     for genreId in movie.genres {
-      let genre = Session.shared.getGenreById(genreId)
+      let genre = Session.shared().getGenreById(genreId)
       if genreId == movie.genres.last {
         info += "\(genre?.genre ?? "")"
       } else {
@@ -41,27 +51,18 @@ class MovieCellViewModel {
       }
     }
     
-    info += " - \(convertDurationToString(movie.duration))"
+    info += " - \(Helper.convertDurationToString(movie.duration))"
     movieInfo.accept(info)
     
     let imdb = String(format: "%.01f", movie.imdb)
     movieIMDB.accept(imdb)
     
-    ImageCache.shared.loadImage(url: movie.poster).subscribe(onNext: { [weak self] image in
+    self.moviePoster.accept(nil)
+    ImageCache.shared().loadImage(url: movie.poster).subscribe(onNext: { [weak self] image in
       guard let self = self else { return }
       self.moviePoster.accept(image)
     }, onError: { error in
       
     }).disposed(by: disposeBag)
-  }
-  
-  func convertDurationToString(_ duration: Int) -> String {
-    let hours = duration / 60
-    let minutes = duration - hours * 60
-    if minutes > 0 {
-      return "\(hours)h \(minutes)m"
-    }
-    
-    return "\(hours)h"
   }
 }

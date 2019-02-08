@@ -47,7 +47,7 @@ class MovieListViewController: UIViewController {
     tableView.estimatedRowHeight = 0
     
     seatPickerView = (Bundle.main.loadNibNamed("SeatPickerView", owner: self, options: nil)?[0] as! SeatPickerView)
-    seatPickerView.viewModel = SeatPickerViewModel()
+    seatPickerView.delegate = self
   }
   
   func showLoadingProgress(show: Bool) {
@@ -59,8 +59,13 @@ class MovieListViewController: UIViewController {
   }
   
   func updateGenresTabBar() {
-    let genres = Session.shared.genresList
+    let genres = Session.shared().genresList
     tabBarView.buildTab(items: genres)
+  }
+  
+  func didFinishCheckout() {
+    viewModel?.resetSelection()
+    tableView.reloadData()
   }
 }
 
@@ -90,17 +95,42 @@ extension MovieListViewController {
          self.viewModel?.selectedGenre(genre)
       }
     }.disposed(by: disposeBag)
+    
+    popcornNaviBar.settingsBtn.rx.tap.asObservable().subscribe { [weak self] _ in
+      guard let self = self else { return }
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let settingsVC = (storyboard.instantiateViewController(withIdentifier: "settingsVC") as! SettingsViewController)
+      settingsVC.viewModel = SettingsViewModel()
+      self.navigationController?.pushViewController(settingsVC, animated: true)
+    }.disposed(by: disposeBag)
+  }
+}
+
+//MARK: Seat picker delegate
+extension MovieListViewController: SeatPickerViewDelegate {
+  func checkoutTicket(_ ticket: Ticket) {
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let checkoutVC = (storyboard.instantiateViewController(withIdentifier: "checkoutVC") as! CheckOutViewController)
+    checkoutVC.viewModel = CheckOutViewModel(ticket: ticket)
+    checkoutVC.viewModel.finishedCheckout.asObservable().subscribe { [weak self] _ in
+      guard let self = self else { return }
+      self.didFinishCheckout()
+    }.disposed(by: disposeBag)
+    self.navigationController?.pushViewController(checkoutVC, animated: true)
   }
 }
 
 //MARK: Movie Cell Delegate
 extension MovieListViewController: MovieTableViewCellDelegate {
-  func seatChoosingDidSeclected(sender: UIButton) {
+  func seatChoosingDidSeclected(sender: UIButton, ticket: Ticket) {
+    seatPickerView.viewModel.updateTicket(ticket: ticket)
+
     let fromRect = sender.superview?.convert(sender.frame, to: view)
     seatPickerView.frame = view.bounds
     view.addSubview(seatPickerView)
     seatPickerView.showView(fromRect: fromRect!)
   }
+  
 }
 
 //MARK: Table datasource

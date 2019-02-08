@@ -96,21 +96,17 @@ extension LoginViewController {
 extension LoginViewController {
   func handleLoginResults(success: Bool) {
     if success {
-      self.performSegue(withIdentifier: "toMovieList", sender: self)
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let movieListVC = (storyboard.instantiateViewController(withIdentifier: "movieListVC") as! MovieListViewController)
+      movieListVC.viewModel = MovieListViewModel()
+      self.navigationController?.pushViewController(movieListVC, animated: true)
+      
     } else {
       let alertPopup = UIAlertController(title: "Login Failed",
                                          message: "Please check your email and password",
                                          preferredStyle: .alert)
       alertPopup.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(alertPopup, animated: true, completion: nil)
-    }
-  }
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "toMovieList",
-      let destination = segue.destination as? MovieListViewController {
-      let viewModel = MovieListViewModel()
-      destination.viewModel = viewModel
     }
   }
 }

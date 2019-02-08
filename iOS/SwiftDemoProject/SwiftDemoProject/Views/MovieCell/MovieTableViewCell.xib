@@ -103,6 +103,7 @@
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_poster" translatesAutoresizingMaskIntoConstraints="NO" id="xjq-vE-6i2">
                                 <rect key="frame" x="30" y="0.0" width="108" height="123"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="108" id="o3i-MO-Cnk"/>
                                     <constraint firstAttribute="height" constant="123" id="xcr-4u-iTR"/>

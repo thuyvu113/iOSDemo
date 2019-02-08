@@ -44,26 +44,24 @@ class LoginViewModel {
     return password.asObservable().map{ $0.count >= 6}
   }
   
-  private func attemptToLogin() {
-    self.loginSucessful.accept(true)
-      
-//    loginInProgress.accept(true)
-//    print("attempt to login")
-//
-//    service.login(email: email.value, password: password.value.toMD5())
-//      .subscribe(onNext: {[weak self] user in
-//        guard let self = self else { return }
-//
-//        Session.shared().updateUserInfo(user)
-//
-//        self.loginInProgress.accept(false)
-//        self.loginSucessful.accept(true)
-//      }, onError: {[weak self] error in
-//        guard let self = self else { return }
-//
-//        print("Login error: \(error)")
-//        self.loginInProgress.accept(false)
-//        self.loginSucessful.accept(false)
-//      }).disposed(by: disposeBag)
+  private func attemptToLogin() {      
+    loginInProgress.accept(true)
+    print("attempt to login")
+
+    service.login(email: email.value, password: password.value.toMD5())
+      .subscribe(onNext: {[weak self] user in
+        guard let self = self else { return }
+
+        Session.shared().updateUserInfo(user)
+
+        self.loginInProgress.accept(false)
+        self.loginSucessful.accept(true)
+      }, onError: {[weak self] error in
+        guard let self = self else { return }
+
+        print("Login error: \(error)")
+        self.loginInProgress.accept(false)
+        self.loginSucessful.accept(false)
+      }).disposed(by: disposeBag)
   }
 }
