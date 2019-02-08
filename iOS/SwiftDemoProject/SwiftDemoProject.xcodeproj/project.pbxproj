@@ -104,7 +104,6 @@
 		F86D9E9E22089B6900E5DC68 /* MovieDateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDateTimePicker.swift; sourceTree = "<group>"; };
 		F86D9EA022089B7900E5DC68 /* MovieDateTimePicker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDateTimePicker.xib; sourceTree = "<group>"; };
 		F86D9EA22208A0A100E5DC68 /* MovieDateTimePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDateTimePickerViewModel.swift; sourceTree = "<group>"; };
-		F86D9EA42208A32300E5DC68 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F86D9EA52208AC1600E5DC68 /* MovieDatePickerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDatePickerControl.swift; sourceTree = "<group>"; };
 		F86D9EA72208AC2100E5DC68 /* MovieDatePickerControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDatePickerControl.xib; sourceTree = "<group>"; };
 		F86D9EAD2208DE8B00E5DC68 /* MovieTimePickerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTimePickerViewCell.swift; sourceTree = "<group>"; };
@@ -324,7 +323,6 @@
 		F8BB4A7F21FE693800B1C723 /* SwiftDemoProject */ = {
 			isa = PBXGroup;
 			children = (
-				F86D9EA42208A32300E5DC68 /* MyPlayground.playground */,
 				F81D82BE21FF4A170043F781 /* Extensions */,
 				F81D82BD21FF4A160043F781 /* Helpers */,
 				F81D82BA21FF4A160043F781 /* Model */,
