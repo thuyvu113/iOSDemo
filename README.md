@@ -24,15 +24,13 @@ This project contains two parts:
 --
 
 <p float="left">
-  <img src="https://raw.githubusercontent.com/thuyvu113/iOSDemo/master/Screenshots/1.png" width="120"  hspace="5"/>
-  <img src="https://raw.githubusercontent.com/thuyvu113/iOSDemo/master/Screenshots/2.png" width="120" hspace="5"/> 
-  <img src="https://raw.githubusercontent.com/thuyvu113/iOSDemo/master/Screenshots/3.png" width="120" hspace="5"/>
-  <img src="https://raw.githubusercontent.com/thuyvu113/iOSDemo/master/Screenshots/4.png" width="120" hspace="5"/>
-</p>
-<p float="left">
-  <img src="https://raw.githubusercontent.com/thuyvu113/iOSDemo/master/Screenshots/5.png" width="120" hspace="5"/>
-  <img src="https://raw.githubusercontent.com/thuyvu113/iOSDemo/master/Screenshots/6.png" width="120" hspace="5"/> 
-  <img src="https://raw.githubusercontent.com/thuyvu113/iOSDemo/master/Screenshots/7.png" width="120" hspace="5"/>
+  <img src="https://raw.githubusercontent.com/thuyvu113/iOSDemo/master/Screenshots/1.png" width="150"  hspace="5"/>
+  <img src="https://raw.githubusercontent.com/thuyvu113/iOSDemo/master/Screenshots/2.png" width="150" hspace="5"/> 
+  <img src="https://raw.githubusercontent.com/thuyvu113/iOSDemo/master/Screenshots/3.png" width="150" hspace="5"/>
+  <img src="https://raw.githubusercontent.com/thuyvu113/iOSDemo/master/Screenshots/4.png" width="150" hspace="5"/>
+  <img src="https://raw.githubusercontent.com/thuyvu113/iOSDemo/master/Screenshots/5.png" width="150" hspace="5"/>
+  <img src="https://raw.githubusercontent.com/thuyvu113/iOSDemo/master/Screenshots/6.png" width="150" hspace="5"/> 
+  <img src="https://raw.githubusercontent.com/thuyvu113/iOSDemo/master/Screenshots/7.png" width="150" hspace="5"/>
 </p>
 
 
