@@ -1,5 +1,5 @@
 ### Thuy Vu - iOS Developer
----
+----
 #### Contact
 
 * Email: <t.d.vu113@gmail.com>
@@ -9,7 +9,7 @@
 This is my iOS demo project. In this project, I built an movie booking app. Users can login, view list of movies by genres, choose date, time, cinema, seats and create e-ticket. The app connects and communicate with server to request login, genres, cinemas, movies. Since the app is for demo purpose, some features may not fully complete to be a real app. 
 
 ### iOS Demo project
---
+---
 This project contains two parts:
 
 1. Server
@@ -21,7 +21,7 @@ This project contains two parts:
 	* Tools: Git, Cocoapods. 
 	
 #### Screenshots
---
+---
 
 <p float="left">
   <img src="https://raw.githubusercontent.com/thuyvu113/iOSDemo/master/Screenshots/1.png" width="150"  hspace="5"/>
@@ -35,7 +35,7 @@ This project contains two parts:
 
 
 ### References
---
+---
 * Design: [www.sketchappsources.com](https://www.sketchappsources.com/free-source/3103-popcorn-app-ui-kit-sketch-freebie-resource.html)
 * [RxSwift](https://github.com/ReactiveX/RxSwift)
 * [Alamofire](https://github.com/Alamofire/Alamofire)
