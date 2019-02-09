@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ibz-RV-IKb">
-                                <rect key="frame" x="113.33333333333333" y="137" width="187.66666666666669" height="41"/>
+                                <rect key="frame" x="113.33333333333333" y="357.66666666666669" width="187.66666666666669" height="41"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="OfE-oP-ZsN">
                                         <rect key="frame" x="0.0" y="0.0" width="41" height="41"/>
@@ -167,11 +167,18 @@
                             <constraint firstItem="Qcm-ZZ-mCP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="37" id="467-Fs-Uxv"/>
                             <constraint firstItem="Qcm-ZZ-mCP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ibz-RV-IKb" secondAttribute="bottom" constant="30" id="Ef2-Kc-Fvv"/>
                             <constraint firstItem="Qcm-ZZ-mCP" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Fbq-NA-M5Q"/>
+                            <constraint firstItem="ibz-RV-IKb" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="JOI-y8-6Uc"/>
                             <constraint firstItem="ibz-RV-IKb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="UNK-hn-TeB"/>
                             <constraint firstItem="Qcm-ZZ-mCP" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ZvE-Dw-fCD"/>
                             <constraint firstItem="ibz-RV-IKb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" priority="750" constant="117" id="fhM-kZ-XOi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fhM-kZ-XOi"/>
+                                <exclude reference="Ef2-Kc-Fvv"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="I66-vT-gGo"/>
                     <connections>
@@ -179,6 +186,10 @@
                         <outlet property="emailTF" destination="M7c-lw-Wud" id="tbd-5P-q6Z"/>
                         <outlet property="loginBtn" destination="XTz-ZP-BfJ" id="0Kf-e1-0mF"/>
                         <outlet property="loginView" destination="Qcm-ZZ-mCP" id="D2f-pU-dIl"/>
+                        <outlet property="logoView" destination="ibz-RV-IKb" id="n0a-NE-b5n"/>
+                        <outlet property="logoViewBottomConstraint" destination="Ef2-Kc-Fvv" id="4dd-dg-dYx"/>
+                        <outlet property="logoViewCenterYConstraint" destination="JOI-y8-6Uc" id="okk-tl-pdg"/>
+                        <outlet property="logoViewTopConstraint" destination="fhM-kZ-XOi" id="8wP-f3-e77"/>
                         <outlet property="passwordBox" destination="DwF-dO-m0t" id="jXD-Xd-99R"/>
                         <outlet property="passwordTF" destination="9Pn-ZF-5CZ" id="2kS-Kn-xv6"/>
                         <outlet property="touchIDBox" destination="hF7-pP-B70" id="ILm-4e-GPW"/>

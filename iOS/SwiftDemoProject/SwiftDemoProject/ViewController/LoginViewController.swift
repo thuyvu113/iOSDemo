@@ -24,6 +24,11 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var touchIDBox: UIView!
   @IBOutlet weak var touchIDBtn: UIButton!
   
+  @IBOutlet weak var logoView: UIStackView!
+  @IBOutlet weak var logoViewBottomConstraint: NSLayoutConstraint!
+  @IBOutlet weak var logoViewTopConstraint: NSLayoutConstraint!
+  @IBOutlet weak var logoViewCenterYConstraint: NSLayoutConstraint!
+  
   var viewModel = LoginViewModel()
   var disposeBag = DisposeBag()
   
@@ -32,6 +37,22 @@ class LoginViewController: UIViewController {
     
     bindViewModel()
     setupViews()
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+
+    UIView.animate(withDuration: 0.5, delay: 1, options: [], animations: {
+      self.logoViewCenterYConstraint.isActive = false
+
+      self.logoViewBottomConstraint.isActive = true
+      self.logoViewTopConstraint.isActive = true
+      self.view.layoutIfNeeded()
+    }) { _ in
+      UIView.animate(withDuration: 0.3, animations: {
+        self.loginView.alpha = 1
+      })
+    }
   }
   
   func setupViews() {
@@ -60,6 +81,8 @@ class LoginViewController: UIViewController {
       viewModel.email.accept("example@abc.com")
       viewModel.password.accept("123456")
     }
+    
+    loginView.alpha = 0
   }
   
   @objc func hideKeyboard() {
@@ -122,7 +145,7 @@ extension LoginViewController {
     viewModel.loginByTouchIDFailed.asObservable().subscribe { [weak self] _ in
       guard let self = self else { return }
       self.hideTouchID()
-    }
+    }.disposed(by: disposeBag)
   }
   
 }
