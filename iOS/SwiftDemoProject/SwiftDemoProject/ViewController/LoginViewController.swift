@@ -78,8 +78,8 @@ class LoginViewController: UIViewController {
       viewModel.email.accept(email)
     } else {
       touchIDBox.isHidden = true
-      viewModel.email.accept("example@abc.com")
-      viewModel.password.accept("123456")
+//      viewModel.email.accept("example@abc.com")
+//      viewModel.password.accept("123456")
     }
     
     loginView.alpha = 0
