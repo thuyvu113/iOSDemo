@@ -36,7 +36,7 @@ This project contains two parts:
 ### Video
 ---
 
-[__Youtube Video__](https://youtu.be/cwQc2byGb3k){:target="_blank"}
+<a href="https://youtu.be/cwQc2byGb3k" target="_blank">__Youtube Video__</a>
 
 ### References
 ---
