@@ -20,7 +20,7 @@ This project contains two parts:
 	* Technologies: MVVM, RxSwift, Alamofire, etc.
 	* Tools: Git, Cocoapods. 
 	
-#### Screenshots
+### Screenshots
 ---
 
 <p float="left">
@@ -33,7 +33,8 @@ This project contains two parts:
   <img src="https://raw.githubusercontent.com/thuyvu113/iOSDemo/master/Screenshots/7.png" width="150" hspace="5"/>
 </p>
 
-
+### Video
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cwQc2byGb3k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ### References
 ---
 * Design: [www.sketchappsources.com](https://www.sketchappsources.com/free-source/3103-popcorn-app-ui-kit-sketch-freebie-resource.html)
