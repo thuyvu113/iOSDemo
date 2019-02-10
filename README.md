@@ -35,7 +35,7 @@ This project contains two parts:
 
 ### Video
 
-[Youtube Video](https://www.youtube.com/embed/cwQc2byGb3k)
+[__Youtube Video__](https://www.youtube.com/embed/cwQc2byGb3k)
 
 ### References
 ---
