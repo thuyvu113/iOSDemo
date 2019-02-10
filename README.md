@@ -34,6 +34,7 @@ This project contains two parts:
 </p>
 
 ### Video
+---
 
 [__Youtube Video__](https://www.youtube.com/embed/cwQc2byGb3k)
 
