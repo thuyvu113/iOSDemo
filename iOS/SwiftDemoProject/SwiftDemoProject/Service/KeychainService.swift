@@ -17,6 +17,8 @@ class KeychainService {
   
   let service = "com.swiftdemoproject.password".data(using: .utf8)!
   
+  //Save password to keychain
+  //Password parameter is plain, original input
   func savePassword(_ password: String, forUser: String) throws {
     let account =  forUser.data(using: .utf8)!
     let passwordData = password.data(using: .utf8)!
@@ -35,6 +37,7 @@ class KeychainService {
     guard status == errSecSuccess else { throw KeychainServiceError.savePasswordFailed(status) }
   }
   
+  //Get saved password form keychain
   func getPassword(forUser: String) throws -> String {
     let account =  forUser.data(using: .utf8)!
     let getquery: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
@@ -49,6 +52,7 @@ class KeychainService {
     return password
   }
   
+  //Delete saved password
   func deletePassword(forUser: String) throws {
     let account =  forUser.data(using: .utf8)!
     let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword,

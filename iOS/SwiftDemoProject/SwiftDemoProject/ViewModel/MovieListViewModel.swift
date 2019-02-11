@@ -19,8 +19,11 @@ class MovieListViewModel {
   private var movies: [String: [Movie]] = [:]
   
   var curGenre: Genre?
-  var loadingInfoInProgress = BehaviorRelay<Bool>(value: false)
-  var loadingMovieInProgress = BehaviorRelay<Bool>(value: false)
+  //show, hide loading indicator when waiting to request genres and locations
+  var loadingInfoInProgress = PublishRelay<Bool>()
+  //request movie in progress
+  var loadingMovieInProgress = PublishRelay<Bool>()
+  //publish movie, infomation result status
   var requestMovieSuccessful = PublishRelay<Void>()
   var requestInfoSucessfull = PublishRelay<Bool>()
   
@@ -42,16 +45,19 @@ class MovieListViewModel {
     return nil
   }
   
+  //when user selected genre from genre tab bar
   func selectedGenre(_ genre: Genre) {
     resetSelection()
     curGenre = genre
     getMovieByGenre(genre.id)
   }
   
+  //when user selected a movie to expand it
   func didSelecedRowAtIndex(_ index: Int) {
     selectedRowIndex = index
   }
   
+  //Reset all movie selection
   func resetSelection() {
     Session.shared().selectedMovie = nil
     Session.shared().selectedDateIndex = nil
@@ -59,10 +65,18 @@ class MovieListViewModel {
     Session.shared().selectedTimeIndex = nil
     selectedRowIndex = -1
   }
+  
+  func refreshCurrentGenre() {
+    resetSelection()
+    getMovieByGenre(curGenre!.id)
+  }
 }
 
 //MARK: API Service
 extension MovieListViewModel {
+  //Get genres and location before get movies
+  //This function will wait untill both information are requested
+  //It is successful only when both genres and locations are requested sucessfully
   func getRequiredInfo() {
     loadingInfoInProgress.accept(true)
 

@@ -17,24 +17,33 @@ class LoginViewModel {
   
   var email = BehaviorRelay<String>(value: "")
   var password = BehaviorRelay<String>(value: "")
+  //Listen to login button tap action
   var loginBtnTaped = PublishRelay<Void>()
-  var loginInProgress = BehaviorRelay<Bool>(value: false)
+  //To show, hide loading indicator (PKHUD)
+  var loginInProgress = PublishRelay<Bool>()
+  //Listen to result of login request
   var loginSucessful = PublishRelay<Bool>()
+  //Listen to touhc ID button action
   var touchIdBtnTaped = PublishRelay<Void>()
+  //Listen to failed case of touch ID to show email, password text fields
   var loginByTouchIDFailed = PublishRelay<Void>()
   
   init() {
+    //Login when login button taped
     loginBtnTaped.subscribe(onNext: { [weak self] in
       guard let self = self else { return }
       self.attemptToLogin()
     }).disposed(by: disposeBag)
     
+    //Active touch ID to retrive saved password and login
     touchIdBtnTaped.subscribe(onNext: { [weak self] in
       guard let self = self else { return }
       self.loginWithTouchId()
     }).disposed(by: disposeBag)
   }
   
+  //Combine two observable variables in one
+  //Check if both email and password are valid
   var credentialsValid: Observable<Bool> {
     return Observable.combineLatest(emailValid, passwordValid) { $0 && $1 }
   }

@@ -20,8 +20,10 @@ class MovieListViewController: UIViewController {
   @IBOutlet weak var popcornNaviBar: PopcornNavigationBar!
   @IBOutlet weak var tabBarView: PopcornTabBarView!
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
   
   var seatPickerView: SeatPickerView!
+  var refreshControl: UIRefreshControl!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -46,6 +48,11 @@ class MovieListViewController: UIViewController {
     tableView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
     tableView.estimatedRowHeight = 0
     
+    refreshControl = UIRefreshControl()
+    refreshControl.tintColor = UIColor(RGBA: [229, 57, 53, 100])
+    refreshControl.addTarget(self, action: #selector(handleRefreshTable(_:)), for: .valueChanged)
+    tableView.refreshControl = refreshControl
+    
     seatPickerView = (Bundle.main.loadNibNamed("SeatPickerView", owner: self, options: nil)?[0] as! SeatPickerView)
     seatPickerView.delegate = self
   }
@@ -67,6 +74,10 @@ class MovieListViewController: UIViewController {
     viewModel?.resetSelection()
     tableView.reloadData()
   }
+  
+  @objc func handleRefreshTable(_ sender: Any) {
+    viewModel?.refreshCurrentGenre()
+  }
 }
 
 //MARK: Binding
@@ -74,6 +85,7 @@ extension MovieListViewController {
   func bindViewModel() {
     viewModel?.requestMovieSuccessful.asObservable().subscribe({ [weak self] _ in
       guard let self = self else { return }
+      self.refreshControl.endRefreshing()
       self.tableView.reloadData()
     }).disposed(by: disposeBag)
     
@@ -95,6 +107,19 @@ extension MovieListViewController {
          self.viewModel?.selectedGenre(genre)
       }
     }.disposed(by: disposeBag)
+    
+    viewModel?.loadingMovieInProgress.asObservable().subscribe({  [weak self] event in
+      guard let self = self else { return }
+      
+      guard self.refreshControl.isRefreshing == false else { return }
+      
+      if event.element! {
+        self.tableView.reloadData()
+        self.loadingIndicator.startAnimating()
+      } else {
+        self.loadingIndicator.stopAnimating()
+      }
+    }).disposed(by: disposeBag)
     
     popcornNaviBar.settingsBtn.rx.tap.asObservable().subscribe { [weak self] _ in
       guard let self = self else { return }
@@ -142,9 +167,10 @@ extension MovieListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieTableViewCell
     cell.delegate = self
-    let movie = viewModel?.getMovieAt(indexPath.row)
-    let expanded = viewModel?.selectedRowIndex == indexPath.row
-    cell.updateMovie(movie!, expanded: expanded)
+    if let movie = viewModel?.getMovieAt(indexPath.row) {
+      let expanded = viewModel?.selectedRowIndex == indexPath.row
+      cell.updateMovie(movie, expanded: expanded)
+    }
     return cell
   }
   

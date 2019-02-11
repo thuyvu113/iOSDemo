@@ -18,6 +18,9 @@ class APIService {
     case notFound = 404
   }
   
+  //Get movies by genre
+  //Return an observable value
+  //It is required to catch both onNext and onError events
   func getMovies(genre genreId: String) -> Observable<[Movie]> {
     return Observable.create({ observer -> Disposable in
       let url = "https://iosdemono1.firebaseapp.com/movies?genre=\(genreId)"
@@ -50,6 +53,9 @@ class APIService {
     })
   }
   
+  //Get all locations, cinemas
+  //Return and observable value
+  //It is required to process onNext event only with optional location list
   func getAllLocations() -> Observable<[Location]?> {
     return Observable.create({ observer -> Disposable in
       let url = "https://iosdemono1.firebaseapp.com/locations"
@@ -82,6 +88,9 @@ class APIService {
     })
   }
   
+  //Get all genres
+  //Return and observable value
+  //It is required to process onNext event only with optional genre list
   func getAllGenres() -> Observable<[Genre]?> {
     return Observable.create({ observer -> Disposable in
       let url = "https://iosdemono1.firebaseapp.com/genres"
@@ -114,6 +123,9 @@ class APIService {
     })
   }
   
+  //Login by email and password
+  //Password parameter is MD5 hash
+  //It is required to process both onNext and onError events
   func login(email: String, password: String) -> Observable<User> {
     let params = [
       "email": email,

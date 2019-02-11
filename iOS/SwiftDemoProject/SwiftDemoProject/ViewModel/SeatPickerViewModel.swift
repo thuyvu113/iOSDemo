@@ -14,6 +14,7 @@ class SeatPickerViewModel {
   let disposeBag = DisposeBag()
   
   private var ticket: Ticket!
+  //Listen to number of selected seat to enable checkout button when user choose at least one seat
   var numberOfSelectedSeat = BehaviorRelay<Int>(value: 0)
   var movieTitle = BehaviorRelay<String>(value: "")
   var movieLocation = BehaviorRelay<String>(value: "")
@@ -23,6 +24,7 @@ class SeatPickerViewModel {
   var selectedSeats: NSMutableSet = NSMutableSet()
   var seatNames: [Int: String] = [:]
   
+  //Reload ticket
   func updateTicket(ticket: Ticket) {
     self.ticket = ticket
     movieTitle.accept(ticket.movie.title)
@@ -36,6 +38,7 @@ class SeatPickerViewModel {
     }).disposed(by: disposeBag)
   }
   
+  //Append seat selection infor for checkout screen
   func getTicketForNext() -> Ticket {
     ticket.seats.removeAll()
     for seat in selectedSeats {

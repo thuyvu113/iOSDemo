@@ -31,6 +31,7 @@ class MovieCellViewModel {
     }).disposed(by: disposeBag)
   }
   
+  //Create ticket when user press seat selection button
   func createTicket() -> Ticket {
     var ticket = Ticket(movie: movie.value!)
     ticket.location = dateTimePickerViewModel.getSelectedLocation()
@@ -39,6 +40,7 @@ class MovieCellViewModel {
     return ticket
   }
   
+  //Change movie model for each cell
   private func updateMovie(_ movie: Movie) {
     movieTitle.accept(movie.title)
     var info = ""

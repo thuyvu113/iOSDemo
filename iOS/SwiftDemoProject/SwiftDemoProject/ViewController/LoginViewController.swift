@@ -72,14 +72,14 @@ class LoginViewController: UIViewController {
     touchIDBox.layer.borderWidth = 1
     touchIDBox.layer.borderColor = UIColor.init(RGBA: [229, 57, 53, 100]).cgColor
     
-    if let email = Helper.getSavedUser() {
+    if let email = Helper.getSavedUser(), Helper.isTouchIDEnabled() {
       loginBtn.isHidden = true
       passwordBox.isHidden = true
       viewModel.email.accept(email)
     } else {
       touchIDBox.isHidden = true
-//      viewModel.email.accept("example@abc.com")
-//      viewModel.password.accept("123456")
+      viewModel.email.accept("example@abc.com")
+      viewModel.password.accept("123456")
     }
     
     loginView.alpha = 0
@@ -121,10 +121,10 @@ extension LoginViewController {
     
     viewModel.credentialsValid.bind(to: loginBtn.rx.isEnabled).disposed(by: disposeBag)
     loginBtn.rx.tap
-      .debounce(1.0, scheduler: MainScheduler.instance).asObservable()
+      .debounce(0.4, scheduler: MainScheduler.instance).asObservable()
       .bind(to: viewModel.loginBtnTaped).disposed(by: disposeBag)
     touchIDBtn.rx.tap
-      .debounce(1.0, scheduler: MainScheduler.instance).asObservable()
+      .debounce(0.4, scheduler: MainScheduler.instance).asObservable()
       .bind(to: viewModel.touchIdBtnTaped).disposed(by: disposeBag)
     
     viewModel.loginBtnTaped.subscribe(onNext: { [weak self] in

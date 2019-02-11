@@ -34,6 +34,7 @@ class CheckOutViewModel {
     self.ticket = ticket
   }
   
+  //Load information to e-ticket
   func loadData() {
     let movie = ticket.movie!
     

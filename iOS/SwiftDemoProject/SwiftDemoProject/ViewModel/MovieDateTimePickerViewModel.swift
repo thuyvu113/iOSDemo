@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+//Model for day in date selection section in each cell
 struct CalendarDay {
   let month: Int
   let day: Int
@@ -42,12 +43,14 @@ class MovieDateTimePickerViewModel {
   var selectedLocationIndex = BehaviorRelay<Int>(value: 0)
   var selectedDateIndex = BehaviorRelay<Int>(value: 0)
   
+  //Only enable seat selection button when user chose date, location, time for a movie
   var selectedEnoughInfo: Observable<Bool> {
     return Observable.combineLatest(selectedDateIndex.asObservable(),
                                     selectedLocationIndex.asObservable(),
                                     seclectedTimeIndex.asObservable()) {($0 >= 0) && ($1 >= 0) && ($2 >= 0)}
   }
   
+  //List of dates to chose, one week from the current day
   var dates: [CalendarDay]!
   
   init() {
@@ -55,6 +58,7 @@ class MovieDateTimePickerViewModel {
     locations = Session.shared().locationsList
   }
   
+  //Load data for the current expanded movie cell
   func preLoadDataFromSession() {
     if let dateIndex = Session.shared().selectedDateIndex {
       selectedDateIndex.accept(dateIndex)
@@ -69,6 +73,7 @@ class MovieDateTimePickerViewModel {
     }
   }
   
+  //reset for collapsed cell
   func reset() {
     seclectedTimeIndex.accept(-1)
     selectedDateIndex.accept(0)

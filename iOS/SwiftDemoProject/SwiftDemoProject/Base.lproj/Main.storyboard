@@ -175,8 +175,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="fhM-kZ-XOi"/>
                                 <exclude reference="Ef2-Kc-Fvv"/>
+                                <exclude reference="fhM-kZ-XOi"/>
                             </mask>
                         </variation>
                     </view>
@@ -242,14 +242,20 @@
                                     <outlet property="delegate" destination="cJf-bI-Hb6" id="mZe-5E-erM"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="GIl-IM-ndy">
+                                <rect key="frame" x="197" y="136" width="20" height="20"/>
+                                <color key="color" red="0.8980392157" green="0.22352941179999999" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="JBv-tW-whP" firstAttribute="leading" secondItem="ejH-mf-3y3" secondAttribute="leading" id="0mc-5E-Sj6"/>
                             <constraint firstItem="JBv-tW-whP" firstAttribute="trailing" secondItem="ejH-mf-3y3" secondAttribute="trailing" id="7w5-A0-AjS"/>
+                            <constraint firstItem="GIl-IM-ndy" firstAttribute="centerX" secondItem="nta-No-p9K" secondAttribute="centerX" id="7zC-cZ-A1r"/>
                             <constraint firstItem="yim-Jn-vAM" firstAttribute="top" secondItem="ejH-mf-3y3" secondAttribute="top" id="Dwk-NU-tcO"/>
                             <constraint firstItem="nta-No-p9K" firstAttribute="trailing" secondItem="ejH-mf-3y3" secondAttribute="trailing" id="EpB-WS-4Gr"/>
                             <constraint firstItem="nta-No-p9K" firstAttribute="top" secondItem="JBv-tW-whP" secondAttribute="bottom" id="O61-2H-G5O"/>
+                            <constraint firstItem="GIl-IM-ndy" firstAttribute="top" secondItem="nta-No-p9K" secondAttribute="top" constant="10" id="Weu-oT-Glj"/>
                             <constraint firstItem="nta-No-p9K" firstAttribute="bottom" secondItem="ejH-mf-3y3" secondAttribute="bottom" id="d3h-Wu-V3J"/>
                             <constraint firstItem="yim-Jn-vAM" firstAttribute="trailing" secondItem="ejH-mf-3y3" secondAttribute="trailing" id="mDt-AH-tmm"/>
                             <constraint firstItem="nta-No-p9K" firstAttribute="leading" secondItem="ejH-mf-3y3" secondAttribute="leading" id="qLo-yz-fnq"/>
@@ -259,6 +265,7 @@
                         <viewLayoutGuide key="safeArea" id="ejH-mf-3y3"/>
                     </view>
                     <connections>
+                        <outlet property="loadingIndicator" destination="GIl-IM-ndy" id="bKo-ar-fBe"/>
                         <outlet property="popcornNaviBar" destination="yim-Jn-vAM" id="cuw-Qi-hsQ"/>
                         <outlet property="tabBarView" destination="Wd4-ZF-y9Y" id="BAj-mP-Fld"/>
                         <outlet property="tableView" destination="nta-No-p9K" id="6lE-ng-L6Q"/>

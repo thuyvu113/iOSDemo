@@ -41,6 +41,7 @@ class SettingsViewModel {
     }
   }
   
+  //check password before save to keychain
   func savePassword(_ password: String) {
     self.checkPasswordInProgress.accept(true)
     let email = (Session.shared().userInfo?.email)!
