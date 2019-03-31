@@ -4,7 +4,6 @@ use_frameworks!
 
 target 'SwiftDemoProject' do
   # Pods for SwiftDemoProject
-  pod 'Alamofire',    '~> 4.0'
   pod 'RxSwift',    '~> 4.0'
   pod 'RxCocoa',    '~> 4.0'
   pod 'RxSwiftExt'
@@ -14,7 +13,6 @@ end
 
 target 'SwiftDemoProjectTests' do
   # Pods for SwiftDemoProjectTests
-  pod 'Alamofire',    '~> 4.0'
   pod 'RxSwift',    '~> 4.0'
   pod 'RxCocoa',    '~> 4.0'
   pod 'Moya/RxSwift', '~> 12.0'

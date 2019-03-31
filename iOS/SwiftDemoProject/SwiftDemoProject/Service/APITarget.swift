@@ -24,7 +24,7 @@ extension APITarget: TargetType {
   public var path: String {
     switch self {
     case .login: return "/login"
-    case .movies(let genreId): return "/movies?genre=\(genreId)"
+    case .movies: return "/movies"
     case .genres: return "/genres"
     case .locations: return "/locations"
     }
@@ -48,8 +48,10 @@ extension APITarget: TargetType {
         "email": email,
         "password": password
       ]
-      return .requestParameters(parameters: params, encoding: URLEncoding.default)
-    case .movies, .genres, .locations:
+      return .requestParameters(parameters: params, encoding: JSONEncoding.default)
+    case .movies(let genreId):
+      return .requestParameters(parameters: ["genre": genreId], encoding: URLEncoding.default)
+    case .genres, .locations:
       return .requestPlain
     }
   }

@@ -21,7 +21,6 @@
 		F81B9F1522035ED300795E60 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F1422035ED300795E60 /* LoginViewModelTests.swift */; };
 		F81B9F1C2203617000795E60 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F1B2203617000795E60 /* LoginViewModel.swift */; };
 		F81B9F1E2203B6F400795E60 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F1D2203B6F400795E60 /* Genre.swift */; };
-		F81B9F202203B80D00795E60 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F1F2203B80D00795E60 /* ServerResponse.swift */; };
 		F81B9F232203C23000795E60 /* APIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F222203C23000795E60 /* APIServiceTests.swift */; };
 		F81B9F272203E18100795E60 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F262203E18100795E60 /* StringExtension.swift */; };
 		F81EB3032207379700C8BDCC /* PopcornNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81EB3022207379700C8BDCC /* PopcornNavigationBar.swift */; };
@@ -91,7 +90,6 @@
 		F81B9F1422035ED300795E60 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		F81B9F1B2203617000795E60 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		F81B9F1D2203B6F400795E60 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
-		F81B9F1F2203B80D00795E60 /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		F81B9F222203C23000795E60 /* APIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIServiceTests.swift; path = SwiftDemoProjectTests/Service/APIServiceTests.swift; sourceTree = SOURCE_ROOT; };
 		F81B9F262203E18100795E60 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = SwiftDemoProject/Helpers/StringExtension.swift; sourceTree = SOURCE_ROOT; };
 		F81EB3022207379700C8BDCC /* PopcornNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopcornNavigationBar.swift; sourceTree = "<group>"; };
@@ -220,7 +218,6 @@
 				F81B9F0222035AFB00795E60 /* User.swift */,
 				F81B9F0422035DFD00795E60 /* Movie.swift */,
 				F81B9F1D2203B6F400795E60 /* Genre.swift */,
-				F81B9F1F2203B80D00795E60 /* ServerResponse.swift */,
 				F806858A2204A0C900A0FB68 /* Session.swift */,
 				F86D9EB72209D84000E5DC68 /* Ticket.swift */,
 				F89A0C0722516CAA004D0FB8 /* APIResponse.swift */,
@@ -612,7 +609,6 @@
 				F8E41B10220B9B65006133EA /* SettingsViewModel.swift in Sources */,
 				F81EB3092207423100C8BDCC /* MovieListViewModel.swift in Sources */,
 				F81EB31122077D6800C8BDCC /* MovieTableViewCell.swift in Sources */,
-				F81B9F202203B80D00795E60 /* ServerResponse.swift in Sources */,
 				F81B9F0522035DFD00795E60 /* Movie.swift in Sources */,
 				F86D9EB62209D66F00E5DC68 /* SeatPickerViewModel.swift in Sources */,
 				F86D9EB22208F79D00E5DC68 /* SeatPickerView.swift in Sources */,

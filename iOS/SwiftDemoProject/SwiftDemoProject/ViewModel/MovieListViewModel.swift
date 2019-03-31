@@ -105,11 +105,11 @@ extension MovieListViewModel {
     
     service.getMovies(genre: genreId).subscribe(onNext: {[weak self] movies in
       guard let self = self else { return }
-      self.movies[genreId] = movies
+      if let movies = movies {
+        self.movies[genreId] = movies
+      }
       self.requestMovieSuccessful.accept(())
       self.loadingMovieInProgress.accept(false)
-      }, onError: { _ in
-        self.loadingMovieInProgress.accept(false)
-    }).disposed(by: disposeBag)
+      }).disposed(by: disposeBag)
   }
 }
