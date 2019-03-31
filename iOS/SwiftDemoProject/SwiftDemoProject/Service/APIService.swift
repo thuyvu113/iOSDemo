@@ -9,8 +9,10 @@
 import Foundation
 import RxSwift
 import Alamofire
+import Moya
 
 class APIService {
+  let disposeBag = DisposeBag()
   
   enum APIResponseError: Int, Error {
     case requestFailed = 1
@@ -127,38 +129,22 @@ class APIService {
   //Password parameter is MD5 hash
   //It is required to process both onNext and onError events
   func login(email: String, password: String) -> Observable<User> {
-    let params = [
-      "email": email,
-      "password": password
-    ]
-    
-    return Observable.create({ observer-> Disposable in
-      let url = "https://iosdemono1.firebaseapp.com/login"
-      Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default)
-        .validate()
-        .responseJSON(completionHandler: { response in
-          switch response.result {
-          case .success:
-            guard let data = response.data else {
-              observer.onError(response.error ?? APIResponseError.notFound)
-              return
-            }
-            do {
-              try self.printResponse(data)
-              let responseData = try JSONDecoder().decode(ServerResponse.self, from: data)
-              if responseData.status == 1 {
-                let userInfo = responseData.data.get() as! User
-                observer.onNext(userInfo)
-              } else {
-                observer.onError(APIResponseError.requestFailed)
-              }
-            } catch {
-              observer.onError(error)
-            }
-          case .failure(let error):
-            observer.onError(error)
+    return Observable.create({observer-> Disposable in
+      let provider = MoyaProvider<APITarget>()
+      provider.rx.request(.login(email: email, password: password)).subscribe { event in
+        switch event {
+        case .success(let response):
+          do {
+            let userInfo = try response.map(APIResponse<User>.self).data
+            observer.onNext(userInfo)
+          } catch {
+            observer.onError(APIResponseError.parseFailed)
           }
-        })
+        case .error(let error):
+          observer.onError(error)
+        }
+      }.disposed(by: self.disposeBag)
+      
       return Disposables.create()
     })
   }

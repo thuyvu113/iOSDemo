@@ -14,6 +14,7 @@
 		F80685872204960C00A0FB68 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80685842204960C00A0FB68 /* UIColorExtension.swift */; };
 		F80685892204962600A0FB68 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80685882204962600A0FB68 /* LoginViewController.swift */; };
 		F806858B2204A0C900A0FB68 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806858A2204A0C900A0FB68 /* Session.swift */; };
+		F80D4FC5225165CD00594738 /* APITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80D4FC4225165CD00594738 /* APITarget.swift */; };
 		F81B9F0122035A3C00795E60 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F0022035A3C00795E60 /* APIService.swift */; };
 		F81B9F0322035AFB00795E60 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F0222035AFB00795E60 /* User.swift */; };
 		F81B9F0522035DFD00795E60 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81B9F0422035DFD00795E60 /* Movie.swift */; };
@@ -45,6 +46,7 @@
 		F86D9EB62209D66F00E5DC68 /* SeatPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86D9EB52209D66F00E5DC68 /* SeatPickerViewModel.swift */; };
 		F86D9EB82209D84000E5DC68 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86D9EB72209D84000E5DC68 /* Ticket.swift */; };
 		F86D9EBC2209E20100E5DC68 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86D9EBB2209E20100E5DC68 /* Location.swift */; };
+		F89A0C0822516CAA004D0FB8 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89A0C0722516CAA004D0FB8 /* APIResponse.swift */; };
 		F8BB4A8121FE693800B1C723 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB4A8021FE693800B1C723 /* AppDelegate.swift */; };
 		F8BB4A8621FE693800B1C723 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8421FE693800B1C723 /* Main.storyboard */; };
 		F8BB4A8821FE693800B1C723 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8721FE693800B1C723 /* Assets.xcassets */; };
@@ -80,6 +82,7 @@
 		F80685842204960C00A0FB68 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		F80685882204962600A0FB68 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F806858A2204A0C900A0FB68 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		F80D4FC4225165CD00594738 /* APITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITarget.swift; sourceTree = "<group>"; };
 		F81B9F0022035A3C00795E60 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F81B9F0222035AFB00795E60 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F81B9F0422035DFD00795E60 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -113,6 +116,7 @@
 		F86D9EB52209D66F00E5DC68 /* SeatPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatPickerViewModel.swift; sourceTree = "<group>"; };
 		F86D9EB72209D84000E5DC68 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		F86D9EBB2209E20100E5DC68 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		F89A0C0722516CAA004D0FB8 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		F8BB4A7D21FE693800B1C723 /* SwiftDemoProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDemoProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8BB4A8021FE693800B1C723 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8BB4A8521FE693800B1C723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 				F81B9F1F2203B80D00795E60 /* ServerResponse.swift */,
 				F806858A2204A0C900A0FB68 /* Session.swift */,
 				F86D9EB72209D84000E5DC68 /* Ticket.swift */,
+				F89A0C0722516CAA004D0FB8 /* APIResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 		F81D82BB21FF4A160043F781 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				F80D4FC4225165CD00594738 /* APITarget.swift */,
 				F81B9F0022035A3C00795E60 /* APIService.swift */,
 				F8E41B11220C82FD006133EA /* KeychainService.swift */,
 			);
@@ -478,7 +484,9 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftDemoProject/Pods-SwiftDemoProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -489,7 +497,9 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -532,6 +542,8 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftDemoProjectTests/Pods-SwiftDemoProjectTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -541,6 +553,8 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -573,6 +587,7 @@
 				F86D9EAF2208DE8B00E5DC68 /* MovieTimePickerViewCell.swift in Sources */,
 				F81B9F272203E18100795E60 /* StringExtension.swift in Sources */,
 				F86D9EA62208AC1600E5DC68 /* MovieDatePickerControl.swift in Sources */,
+				F89A0C0822516CAA004D0FB8 /* APIResponse.swift in Sources */,
 				F81EB3142207923E00C8BDCC /* MovieCellViewModel.swift in Sources */,
 				F8E41B04220B2E08006133EA /* CheckOutViewController.swift in Sources */,
 				F8E41B08220B428D006133EA /* Helper.swift in Sources */,
@@ -590,6 +605,7 @@
 				F80685852204960C00A0FB68 /* CALayerExtension.swift in Sources */,
 				F81EB3032207379700C8BDCC /* PopcornNavigationBar.swift in Sources */,
 				F81EB31622079ACE00C8BDCC /* ImageCache.swift in Sources */,
+				F80D4FC5225165CD00594738 /* APITarget.swift in Sources */,
 				F8BB4A8121FE693800B1C723 /* AppDelegate.swift in Sources */,
 				F806858B2204A0C900A0FB68 /* Session.swift in Sources */,
 				F86D9EB82209D84000E5DC68 /* Ticket.swift in Sources */,
