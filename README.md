@@ -17,7 +17,7 @@ This project contains two parts:
 	* Technologies: Firebase (firestore, functions), express.
 2. iOS app
 	* Programming language: Swift 4.2
-	* Technologies: MVVM, RxSwift, Alamofire, etc.
+	* Technologies: MVVM, RxSwift, Moya, Alamofire, etc.
 	* Tools: Git, Cocoapods. 
 	
 ### Screenshots
@@ -42,6 +42,7 @@ This project contains two parts:
 ---
 * Design: [www.sketchappsources.com](https://www.sketchappsources.com/free-source/3103-popcorn-app-ui-kit-sketch-freebie-resource.html)
 * [RxSwift](https://github.com/ReactiveX/RxSwift)
+* [Moya](https://github.com/Moya/Moya)
 * [Alamofire](https://github.com/Alamofire/Alamofire)
 * [Cocoapods](https://cocoapods.org/)
 
