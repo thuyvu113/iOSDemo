@@ -37,7 +37,7 @@ class APIService {
           result.accept(nil)
         }
       case .error:
-        result.acceptt(nil)
+        result.accept(nil)
       }
       }.disposed(by: self.disposeBag)
     
