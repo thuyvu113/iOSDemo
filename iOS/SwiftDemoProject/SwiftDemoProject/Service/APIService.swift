@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 import Moya
 
 class APIService {
@@ -23,98 +24,98 @@ class APIService {
   //Return an observable value
   //It is required to catch both onNext and onError events
   func getMovies(genre genreId: String) -> Observable<[Movie]?> {
-    return Observable.create({ observer -> Disposable in
-      let provider = MoyaProvider<APITarget>()
-      provider.rx.request(.movies(genreId: genreId)).subscribe{ event in
-        switch event {
-        case .success(let response):
-          do {
-            let movies = try response.map(APIResponse<[Movie]>.self).data
-            observer.onNext(movies)
-          } catch {
-            observer.onNext(nil)
-          }
-        case .error:
-          observer.onNext(nil)
+    let result = PublishRelay<[Movie]?>()
+    
+    let provider = MoyaProvider<APITarget>()
+    provider.rx.request(.movies(genreId: genreId)).subscribe{ event in
+      switch event {
+      case .success(let response):
+        do {
+          let movies = try response.map(APIResponse<[Movie]>.self).data
+          result.accept(movies)
+        } catch {
+          result.accept(nil)
         }
+      case .error:
+        result.acceptt(nil)
+      }
       }.disposed(by: self.disposeBag)
-      
-      return Disposables.create()
-    })
+    
+    return result.asObservable()
   }
   
   //Get all locations, cinemas
   //Return and observable value
   //It is required to process onNext event only with optional location list
   func getAllLocations() -> Observable<[Location]?> {
-    return Observable.create({ observer -> Disposable in
-      let provider = MoyaProvider<APITarget>()
-      provider.rx.request(.locations).subscribe { event in
-        switch event {
-        case .success(let response):
-          do {
-            let locations = try response.map(APIResponse<[Location]>.self).data
-            observer.onNext(locations)
-          } catch {
-            observer.onNext(nil)
-          }
-        case .error:
-          observer.onNext(nil)
+    let result = PublishRelay<[Location]?>()
+    
+    let provider = MoyaProvider<APITarget>()
+    provider.rx.request(.locations).subscribe { event in
+      switch event {
+      case .success(let response):
+        do {
+          let locations = try response.map(APIResponse<[Location]>.self).data
+          result.accept(locations)
+        } catch {
+          result.accept(nil)
         }
+      case .error:
+        result.accept(nil)
+      }
       }.disposed(by: self.disposeBag)
-      
-      return Disposables.create()
-    })
+    
+    return result.asObservable()
   }
   
   //Get all genres
   //Return and observable value
   //It is required to process onNext event only with optional genre list
   func getAllGenres() -> Observable<[Genre]?> {
-    return Observable.create({ observer -> Disposable in
-      let provider = MoyaProvider<APITarget>()
-      provider.rx.request(.genres).subscribe{ event in
-        switch event {
-        case .success(let response):
-          do {
-            let genres = try response.map(APIResponse<[Genre]>.self).data
-            observer.onNext(genres)
-          } catch {
-            observer.onNext(nil)
-          }
-        case .error:
-          observer.onNext(nil)
+    let result = PublishRelay<[Genre]?>()
+    
+    let provider = MoyaProvider<APITarget>()
+    provider.rx.request(.genres).subscribe{ event in
+      switch event {
+      case .success(let response):
+        do {
+          let genres = try response.map(APIResponse<[Genre]>.self).data
+          result.accept(genres)
+        } catch {
+          result.accept(nil)
         }
+      case .error:
+        result.accept(nil)
+      }
       }.disposed(by: self.disposeBag)
-      
-      return Disposables.create()
-    })
+    
+    return result.asObservable()
   }
   
   //Login by email and password
   //Password parameter is MD5 hash
   //It is required to process both onNext and onError events
   func login(email: String, password: String) -> Observable<User> {
-    return Observable.create({observer-> Disposable in
-      let provider = MoyaProvider<APITarget>()
-      provider.rx.request(.login(email: email, password: password)).subscribe { event in
-        switch event {
-        case .success(let response):
-          do {
-            if let userInfo = try response.map(APIResponse<User>.self).data {
-              observer.onNext(userInfo)
-            } else {
-              observer.onError(APIResponseError.notFound)
-            }
-          } catch {
-            observer.onError(APIResponseError.parseFailed)
+    let result = PublishSubject<User>()
+    
+    let provider = MoyaProvider<APITarget>()
+    provider.rx.request(.login(email: email, password: password)).subscribe { event in
+      switch event {
+      case .success(let response):
+        do {
+          if let userInfo = try response.map(APIResponse<User>.self).data {
+            result.onNext(userInfo)
+          } else {
+            result.onError(APIResponseError.notFound)
           }
-        case .error(let error):
-          observer.onError(error)
+        } catch {
+          result.onError(APIResponseError.parseFailed)
         }
+      case .error(let error):
+        result.onError(error)
+      }
       }.disposed(by: self.disposeBag)
-      
-      return Disposables.create()
-    })
-  }  
+    
+    return result.asObservable()
+  }
 }
