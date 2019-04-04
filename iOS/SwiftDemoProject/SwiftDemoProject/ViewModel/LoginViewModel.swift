@@ -2,7 +2,6 @@
 //  LoginViewModel.swift
 //  SwiftDemoProject
 //
-//  Created by thuyvd on 2019-01-28.
 //  Copyright © 2019 Thuy Vu. All rights reserved.
 //
 
@@ -30,10 +29,12 @@ class LoginViewModel {
   
   init() {
     //Login when login button taped
-    loginBtnTaped.subscribe(onNext: { [weak self] in
-      guard let self = self else { return }
-      self.attemptToLogin()
-    }).disposed(by: disposeBag)
+    loginBtnTaped
+      .withLatestFrom(credentials)
+      .subscribe(onNext: { [weak self] credentials in
+        guard let self = self else { return }
+        self.attemptToLogin(credentials)
+      }).disposed(by: disposeBag)
     
     //Active touch ID to retrive saved password and login
     touchIdBtnTaped.subscribe(onNext: { [weak self] in
@@ -46,6 +47,10 @@ class LoginViewModel {
   //Check if both email and password are valid
   var credentialsValid: Observable<Bool> {
     return Observable.combineLatest(emailValid, passwordValid) { $0 && $1 }
+  }
+  
+  var credentials: Observable<[String: String]> {
+    return Observable.combineLatest(email, password) { ["email": $0, "password": $1]}
   }
   
   private var emailValid: Observable<Bool> {
@@ -68,7 +73,7 @@ class LoginViewModel {
           let keychainService = KeychainService()
           let password = try keychainService.getPassword(forUser: Helper.getSavedUserId())
           self.password.accept(password)
-          self.attemptToLogin()
+          self.loginBtnTaped.accept(())
         } catch {
           self.loginByTouchIDFailed.accept(())
         }
@@ -78,11 +83,14 @@ class LoginViewModel {
     }
   }
   
-  private func attemptToLogin() {      
+  private func attemptToLogin(_ credentials: [String: String]) {
     loginInProgress.accept(true)
     print("attempt to login")
-
-    service.login(email: email.value, password: password.value.toMD5())
+    
+    guard let email = credentials["email"] else { return }
+    guard let password = credentials["password"] else { return }
+    
+    service.login(email: email, password: password.toMD5())
       .subscribe(onNext: {[weak self] user in
         guard let self = self else { return }
 

@@ -2,7 +2,6 @@
 //  APIServiceTests.swift
 //  SwiftDemoProjectTests
 //
-//  Created by thuyvd on 2019-01-31.
 //  Copyright © 2019 Thuy Vu. All rights reserved.
 //
 
@@ -33,7 +32,6 @@ class APIServiceTests: XCTestCase {
     let promise = expectation(description: "Get movies successfuly")
     
     service.getMovies(genre: genreId).subscribe(onNext: { movies in
-//      print(movies)
       promise.fulfill()
     }, onError: { error in
       XCTFail("Error: \(error)")
@@ -46,7 +44,6 @@ class APIServiceTests: XCTestCase {
     let promise = expectation(description: "Get genres successfuly")
     
     service.getAllGenres().subscribe(onNext: { genres in
-//      print(genres)
       promise.fulfill()
     }, onError: { error in
       XCTFail("Error: \(error)")
@@ -58,7 +55,7 @@ class APIServiceTests: XCTestCase {
   func testGetAllLocations() {
     let promise = expectation(description: "Get locations successfuly")
     
-    service.getAllLocations().subscribe(onNext: { genres in
+    service.getAllLocations().subscribe(onNext: { locations in
       promise.fulfill()
     }, onError: { error in
       XCTFail("Error: \(error)")
@@ -82,10 +79,9 @@ class APIServiceTests: XCTestCase {
     waitForExpectations(timeout: 5, handler: nil)
   }
   
-  func testLoginSuccessful() {
+  func testLoginSuccessfully() {
     let email = "example@abc.com"
     let password = "123456".toMD5()
-    XCTAssertEqual(password, "e10adc3949ba59abbe56e057f20f883e")
     
     let promise = expectation(description: "Login successfuly")
     

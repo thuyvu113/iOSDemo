@@ -2,7 +2,6 @@
 //  KeychainService.swift
 //  SwiftDemoProject
 //
-//  Created by thuyvd on 2019-02-07.
 //  Copyright © 2019 Thuy Vu. All rights reserved.
 //
 

@@ -2,7 +2,6 @@
 //  APITarget.swift
 //  SwiftDemoProject
 //
-//  Created by thuyvd on 2019-03-31.
 //  Copyright © 2019 Thuy Vu. All rights reserved.
 //
 
@@ -38,7 +37,66 @@ extension APITarget: TargetType {
   }
   
   public var sampleData: Data {
-    return Data()
+    switch self {
+    case .login(let email, _):
+      let json = """
+      {
+      \"status\": 1,
+      \"data\": {
+        \"id\": \"123123\",
+        \"email\": \"\(email)\",
+        \"firstname\": \"thuy\",
+        \"lastname\": \"vu\"
+      }
+      }
+      """
+      return json.data(using: .utf8)!
+    case .movies:
+      let json = """
+      {
+      \"status\": 1,
+      \"data\": [
+      {
+        \"id\": \"16\",
+        \"title\": \"Mirai\",
+        \"duration\": 120,
+        \"imdb\": 7.2,
+        \"genres\": [\"1\", \"5\"],
+        \"poster\": \"https://firebasestorage.googleapis.com/v0/b/iosdemono1.appspot.com/o/poster_01_tfp39627.jpg?alt=media\",
+        \"cover\": \"https://firebasestorage.googleapis.com/v0/b/iosdemono1.appspot.com/o/bg_01_nkp39896.jpg?alt=media\"
+      }
+      ]
+      }
+      """
+      return json.data(using: .utf8)!
+    case .genres:
+      let json = """
+      {
+      \"status\": 1,
+      \"data\":[
+      {
+        \"id\": \"1\",
+        \"genre\": \"Drama\"
+      }
+      ]
+      }
+      """
+      return json.data(using: .utf8)!
+    case .locations:
+      let json = """
+      {
+      \"status\": 1,
+      \"data\":[
+      {
+        \"id\": \"1\",
+        \"name\": \"Scotiabank Theatre Toronto\",
+        \"showTimes\": [\"10:30 AM\", \"1:00 PM\", \"2:00 PM\", \"7:30 PM\"]
+      }
+      ]
+      }
+      """
+      return json.data(using: .utf8)!
+    }
   }
   
   public var task: Task {

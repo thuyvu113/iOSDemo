@@ -2,7 +2,6 @@
 //  APIResponse.swift
 //  SwiftDemoProject
 //
-//  Created by thuyvd on 2019-03-31.
 //  Copyright © 2019 Thuy Vu. All rights reserved.
 //
 

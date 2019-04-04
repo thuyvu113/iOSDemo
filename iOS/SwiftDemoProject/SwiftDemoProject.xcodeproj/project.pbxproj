@@ -46,6 +46,8 @@
 		F86D9EB82209D84000E5DC68 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86D9EB72209D84000E5DC68 /* Ticket.swift */; };
 		F86D9EBC2209E20100E5DC68 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86D9EBB2209E20100E5DC68 /* Location.swift */; };
 		F89A0C0822516CAA004D0FB8 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89A0C0722516CAA004D0FB8 /* APIResponse.swift */; };
+		F89A0C0B2255A727004D0FB8 /* HelperAndExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89A0C0A2255A727004D0FB8 /* HelperAndExtentions.swift */; };
+		F89A0C0D22565D3E004D0FB8 /* MoyaTargetTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89A0C0C22565D3E004D0FB8 /* MoyaTargetTest.swift */; };
 		F8BB4A8121FE693800B1C723 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB4A8021FE693800B1C723 /* AppDelegate.swift */; };
 		F8BB4A8621FE693800B1C723 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8421FE693800B1C723 /* Main.storyboard */; };
 		F8BB4A8821FE693800B1C723 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8BB4A8721FE693800B1C723 /* Assets.xcassets */; };
@@ -115,6 +117,8 @@
 		F86D9EB72209D84000E5DC68 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		F86D9EBB2209E20100E5DC68 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		F89A0C0722516CAA004D0FB8 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		F89A0C0A2255A727004D0FB8 /* HelperAndExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HelperAndExtentions.swift; path = SwiftDemoProjectTests/Helper/HelperAndExtentions.swift; sourceTree = SOURCE_ROOT; };
+		F89A0C0C22565D3E004D0FB8 /* MoyaTargetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaTargetTest.swift; sourceTree = "<group>"; };
 		F8BB4A7D21FE693800B1C723 /* SwiftDemoProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDemoProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8BB4A8021FE693800B1C723 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8BB4A8521FE693800B1C723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 		F81B9F0B22035E7900795E60 /* SwiftDemoProjectTests */ = {
 			isa = PBXGroup;
 			children = (
+				F89A0C092255A6FA004D0FB8 /* Helper */,
 				F81B9F212203C20C00795E60 /* Service */,
 				F81B9F1722035F0A00795E60 /* ViewModel */,
 				F81B9F0E22035E7900795E60 /* Info.plist */,
@@ -205,6 +210,7 @@
 		F81B9F212203C20C00795E60 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				F89A0C0C22565D3E004D0FB8 /* MoyaTargetTest.swift */,
 				F8E41B13220C8A36006133EA /* KeychainServiceTests.swift */,
 				F81B9F222203C23000795E60 /* APIServiceTests.swift */,
 			);
@@ -301,6 +307,14 @@
 				F86D9EAE2208DE8B00E5DC68 /* MovieTimePickerViewCell.xib */,
 			);
 			path = MovieCell;
+			sourceTree = "<group>";
+		};
+		F89A0C092255A6FA004D0FB8 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F89A0C0A2255A727004D0FB8 /* HelperAndExtentions.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		F8BB4A7421FE693700B1C723 = {
@@ -569,8 +583,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8E41B14220C8A36006133EA /* KeychainServiceTests.swift in Sources */,
+				F89A0C0D22565D3E004D0FB8 /* MoyaTargetTest.swift in Sources */,
 				F81B9F232203C23000795E60 /* APIServiceTests.swift in Sources */,
 				F81B9F1522035ED300795E60 /* LoginViewModelTests.swift in Sources */,
+				F89A0C0B2255A727004D0FB8 /* HelperAndExtentions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

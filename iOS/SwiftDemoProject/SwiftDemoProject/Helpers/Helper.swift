@@ -2,7 +2,6 @@
 //  Helper.swift
 //  SwiftDemoProject
 //
-//  Created by thuyvd on 2019-02-06.
 //  Copyright © 2019 Thuy Vu. All rights reserved.
 //
 
@@ -21,6 +20,8 @@ class Helper {
   }
 
   static func movieEndTime(beginTime: String, duration: Int) -> String {
+    guard duration >= 0  else { return "" }
+    
     if let components = timeComponents(input: beginTime) {
       let tag = components[2]
       var hours = Int(components[0])!

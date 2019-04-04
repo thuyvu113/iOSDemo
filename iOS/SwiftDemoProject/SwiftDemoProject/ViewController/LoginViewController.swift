@@ -2,7 +2,6 @@
 //  LoginViewController.swift
 //  SwiftDemoProject
 //
-//  Created by thuyvd on 2019-01-28.
 //  Copyright © 2019 Thuy Vu. All rights reserved.
 //
 
@@ -39,6 +38,21 @@ class LoginViewController: UIViewController {
     setupViews()
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)),
+                                           name: UIResponder.keyboardWillShowNotification, object: nil)
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)),
+                                           name: UIResponder.keyboardWillHideNotification, object: nil)
+  }
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+  }
+  
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
 
@@ -61,12 +75,6 @@ class LoginViewController: UIViewController {
     
     let touchGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
     view.addGestureRecognizer(touchGesture)
-    
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)),
-                                           name: UIResponder.keyboardWillShowNotification, object: nil)
-    
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)),
-                                           name: UIResponder.keyboardWillHideNotification, object: nil)
     
     touchIDBox.layer.cornerRadius = 10
     touchIDBox.layer.borderWidth = 1
@@ -123,11 +131,12 @@ extension LoginViewController {
     loginBtn.rx.tap
       .debounce(0.4, scheduler: MainScheduler.instance).asObservable()
       .bind(to: viewModel.loginBtnTaped).disposed(by: disposeBag)
+    
     touchIDBtn.rx.tap
       .debounce(0.4, scheduler: MainScheduler.instance).asObservable()
       .bind(to: viewModel.touchIdBtnTaped).disposed(by: disposeBag)
     
-    viewModel.loginBtnTaped.subscribe(onNext: { [weak self] in
+    loginBtn.rx.tap.subscribe(onNext: { [weak self] in
       guard let self = self else { return }
       self.hideKeyboard()
     }).disposed(by: disposeBag)
@@ -147,7 +156,6 @@ extension LoginViewController {
       self.hideTouchID()
     }.disposed(by: disposeBag)
   }
-  
 }
 
 //MARK: Login results

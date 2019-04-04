@@ -2,7 +2,6 @@
 //  APIService.swift
 //  SwiftDemoProject
 //
-//  Created by thuyvd on 2019-01-31.
 //  Copyright © 2019 Thuy Vu. All rights reserved.
 //
 
@@ -29,10 +28,14 @@ class APIService {
     let provider = MoyaProvider<APITarget>()
     provider.rx.request(.movies(genreId: genreId)).subscribe{ event in
       switch event {
-      case .success(let response):
+      case .success(let responseData):
         do {
-          let movies = try response.map(APIResponse<[Movie]>.self).data
-          result.accept(movies)
+          let response = try responseData.map(APIResponse<[Movie]>.self)
+          if response.status == 1, let movies = response.data {
+            result.accept(movies)
+          } else {
+            result.accept(nil)
+          }
         } catch {
           result.accept(nil)
         }
@@ -53,10 +56,14 @@ class APIService {
     let provider = MoyaProvider<APITarget>()
     provider.rx.request(.locations).subscribe { event in
       switch event {
-      case .success(let response):
+      case .success(let responseData):
         do {
-          let locations = try response.map(APIResponse<[Location]>.self).data
-          result.accept(locations)
+          let response = try responseData.map(APIResponse<[Location]>.self)
+          if response.status == 1, let locations = response.data {
+            result.accept(locations)
+          } else {
+            result.accept(nil)
+          }
         } catch {
           result.accept(nil)
         }
@@ -77,10 +84,14 @@ class APIService {
     let provider = MoyaProvider<APITarget>()
     provider.rx.request(.genres).subscribe{ event in
       switch event {
-      case .success(let response):
+      case .success(let responseData):
         do {
-          let genres = try response.map(APIResponse<[Genre]>.self).data
-          result.accept(genres)
+          let response = try responseData.map(APIResponse<[Genre]>.self)
+          if response.status == 1, let genres = response.data {
+            result.accept(genres)
+          } else {
+            result.accept(nil)
+          }
         } catch {
           result.accept(nil)
         }
@@ -101,9 +112,10 @@ class APIService {
     let provider = MoyaProvider<APITarget>()
     provider.rx.request(.login(email: email, password: password)).subscribe { event in
       switch event {
-      case .success(let response):
+      case .success(let responseData):
         do {
-          if let userInfo = try response.map(APIResponse<User>.self).data {
+          let response = try responseData.map(APIResponse<User>.self)
+          if  response.status == 1, let userInfo = response.data {
             result.onNext(userInfo)
           } else {
             result.onError(APIResponseError.notFound)

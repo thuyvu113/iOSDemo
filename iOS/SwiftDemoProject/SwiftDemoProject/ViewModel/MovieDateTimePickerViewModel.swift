@@ -2,7 +2,6 @@
 //  MovieTimePickerViewModel.swift
 //  SwiftDemoProject
 //
-//  Created by thuyvd on 2019-02-04.
 //  Copyright © 2019 Thuy Vu. All rights reserved.
 //
 

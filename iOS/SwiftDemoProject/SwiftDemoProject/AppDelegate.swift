@@ -2,7 +2,6 @@
 //  AppDelegate.swift
 //  SwiftDemoProject
 //
-//  Created by thuyvd on 2019-01-27.
 //  Copyright © 2019 Thuy Vu. All rights reserved.
 //
 
